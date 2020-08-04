@@ -2,7 +2,7 @@ package endpoint
 
 import (
 	"context"
-	"go-full-stack-learn/go-kit/code/user/service"
+	"go-full-stack-learn/clound-native/go-kit/code/user/service"
 
 	"github.com/go-kit/kit/endpoint"
 )

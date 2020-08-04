@@ -1,9 +1,9 @@
 package main
 
 import (
-	"go-full-stack-learn/go-kit/code/user/endpoint"
-	"go-full-stack-learn/go-kit/code/user/service"
-	"go-full-stack-learn/go-kit/code/user/transport"
+	"go-full-stack-learn/clound-native/go-kit/code/user/endpoint"
+	"go-full-stack-learn/clound-native/go-kit/code/user/service"
+	"go-full-stack-learn/clound-native/go-kit/code/user/transport"
 	"net/http"
 
 	httptrasport "github.com/go-kit/kit/transport/http"

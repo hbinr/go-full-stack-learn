@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package services;
+
+message UserRequest {
+  int32 userID=1;
+}
+
+message UserResponce {
+  string name=1;
+  int32 age=2;
+}

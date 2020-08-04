@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"go-full-stack-learn/go-kit/code/user/endpoint"
+	"go-full-stack-learn/clound-native/go-kit/code/user/endpoint"
 	"net/http"
 	"strconv"
 )
