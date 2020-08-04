@@ -2,11 +2,16 @@ syntax = "proto3";
 
 package services;
 
-message UserRequest {
-  int32 userID=1;
+option go_package = "go-full-stack-learn/clound-native/grpc/code/demo_product/pbfile";
+
+message ProdRequest {
+  int32 prodID=1;
 }
 
-message UserResponce {
-  string name=1;
-  int32 age=2;
+message ProdResponse {
+  string prodName=1;
+}
+
+service ProdService{
+  rpc GetProdName (ProdRequest) returns (ProdResponse);
 }
