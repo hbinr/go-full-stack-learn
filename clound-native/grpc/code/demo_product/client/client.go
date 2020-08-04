@@ -4,14 +4,15 @@ import (
 	"context"
 	"fmt"
 	"go-full-stack-learn/clound-native/grpc/code/demo_product/service"
+	"go-full-stack-learn/clound-native/grpc/code/demo_product/util"
 	"log"
 
 	"google.golang.org/grpc"
 )
 
 func main() {
-	// 1.创建连接套接字，端口和服务端一致，并且先不使用HTTPS(即不安全调用)
-	conn, err := grpc.Dial(":8081", grpc.WithInsecure())
+	// 1.创建连接套接字，端口和服务端一致，并开启 TLS 验证
+	conn, err := grpc.Dial(":8092", grpc.WithTransportCredentials(util.GetClientCert()))
 	if err != nil {
 		log.Fatal("客户端连接服务端异常，err:", err)
 	}
