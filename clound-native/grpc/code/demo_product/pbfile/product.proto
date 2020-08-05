@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package services;
+package product_service;
 
 option go_package = "go-full-stack-learn/clound-native/grpc/code/demo_product/pbfile";
 
@@ -12,6 +12,14 @@ message ProdResponse {
   string prodName=1;
 }
 
+message QueryRequest {
+  int32 pageSize=1;
+}
+
+message ProdListResponse {
+  repeated ProdResponse prodList = 1;
+}
 service ProdService{
   rpc GetProdName (ProdRequest) returns (ProdResponse);
+  rpc GetProdNameList(QueryRequest) returns(ProdListResponse);
 }

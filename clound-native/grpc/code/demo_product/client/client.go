@@ -22,10 +22,12 @@ func main() {
 	prodClient := service.NewProdServiceClient(conn)
 
 	// 3.调用远程服务，并处理响应
-	prodResp, err := prodClient.GetProdName(context.Background(), &service.ProdRequest{ProdID: 10})
+	prodResp, err := prodClient.GetProdName(context.Background(), &service.ProdRequest{ProdID: 40})
+	prodList, err := prodClient.GetProdNameList(context.Background(), &service.QueryRequest{PageSize: 5})
 	if err != nil {
 		log.Fatal("调用商品服务异常，err:", err)
 	}
 
-	fmt.Println("商品名称为：", prodResp.ProdName)
+	fmt.Println("调用 GetProdName 接口成功，商品名称为：", prodResp.ProdName)
+	fmt.Println("调用 GetProdNameList 接口成功，商品列表为：", prodList)
 }
