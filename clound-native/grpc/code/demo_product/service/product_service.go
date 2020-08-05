@@ -11,7 +11,15 @@ type ProdService struct {
 func (p *ProdService) GetProdName(ctx context.Context, req *ProdRequest) (*ProdResponse, error) {
 	result := new(ProdResponse)
 	if req.ProdID > 0 && req.ProdID == 40 {
-		result.ProdName = "华为 Mate 40"
+		// ProdArea_A:0 -> 中国区
+		if req.ProdArea == ProdArea_A {
+			result.ProdName = "华为 Mate 40 (中国区)"
+		} else if req.ProdArea == ProdArea_B {
+			result.ProdName = "华为 Mate 40 (中欧美区)"
+		} else {
+			result.ProdName = "华为 Mate 40 (非洲区)"
+
+		}
 	} else {
 		result.ProdName = "华为 Mate XX"
 	}

@@ -4,16 +4,23 @@ package product_service;
 
 option go_package = "go-full-stack-learn/clound-native/grpc/code/demo_product/pbfile";
 
+// ProdArea 产品分布区域
+enum ProdArea {
+  A = 0; // 中国区 必须有0值，默认使用
+  B = 1; // 非洲区
+  C = 2; // 欧美区
+}
 message ProdRequest {
-  int32 prodID=1;
+  int32 prodID = 1;
+  ProdArea ProdArea = 2;
 }
 
 message ProdResponse {
-  string prodName=1;
+  string prodName = 1;
 }
 
 message QueryRequest {
-  int32 pageSize=1;
+  int32 pageSize = 1;
 }
 
 message ProdListResponse {
