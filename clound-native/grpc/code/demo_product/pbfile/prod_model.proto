@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package model;
+
+option go_package = "go-full-stack-learn/clound-native/grpc/code/demo_product/pbfile";
+import "base_model.proto";
+
+message Product {
+    BaseModel BaseModel = 1;
+    int32 ProdID = 2;
+    string ProdName = 3;
+    float ProdPrice = 4;
+}

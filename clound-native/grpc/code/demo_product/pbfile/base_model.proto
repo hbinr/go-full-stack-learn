@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package model;
+option go_package = "go-full-stack-learn/clound-native/grpc/code/demo_product/pbfile";
+
+message BaseModel {
+    int64 UUID = 1;
+}

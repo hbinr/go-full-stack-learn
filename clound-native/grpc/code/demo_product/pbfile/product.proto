@@ -4,6 +4,9 @@ package product_service;
 
 option go_package = "go-full-stack-learn/clound-native/grpc/code/demo_product/pbfile";
 
+// 引入 prod_model.proto 定义的内容
+import public "prod_model.proto";
+
 // ProdArea 产品分布区域
 enum ProdArea {
   A = 0; // 中国区 必须有0值，默认使用
@@ -29,4 +32,6 @@ message ProdListResponse {
 service ProdService{
   rpc GetProdName (ProdRequest) returns (ProdResponse);
   rpc GetProdNameList(QueryRequest) returns(ProdListResponse);
+  rpc GetProdInfo(ProdRequest) returns(model.Product); // 需要加上包名 model
 }
+

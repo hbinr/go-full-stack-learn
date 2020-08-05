@@ -42,3 +42,12 @@ func (p *ProdService) GetProdNameList(ctx context.Context, req *QueryRequest) (*
 		ProdList: prods,
 	}, nil
 }
+
+func (p *ProdService) GetProdInfo(ctx context.Context, req *ProdRequest) (*Product, error) {
+	return &Product{
+		BaseModel: &BaseModel{UUID: 10000001},
+		ProdID:    1,
+		ProdName:  "华为 P10",
+		ProdPrice: 6999.00,
+	}, nil
+}
