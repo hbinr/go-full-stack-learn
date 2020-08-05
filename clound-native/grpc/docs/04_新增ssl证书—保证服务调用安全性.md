@@ -1,4 +1,4 @@
-# grpc服务端和客户端新增SSL证书调用
+# grpc服务端和客户端建立安全连接
 
 ## 一.生成证书
 [只看证书生成步骤即可](https://www.jianshu.com/p/5938432e2130)
@@ -56,6 +56,7 @@ func GetClientCert() credentials.TransportCredentials {
 ```
 
 ## 三.引入证书
+此步骤比较简单，之前我们创立连接的时候未使用相关安全证书，那这次创建连接的时候引入引入证书即可。
 
 ### 1.服务端引入
 主要变动，在创建grpc server的时候：

@@ -18,4 +18,6 @@ gRPC 默认使用 `protocol buffers`，这是 Google 开源的一套成熟的结
 
 例子内使用的却一种名叫 proto3 的新风格的 `protocol buffers`，它拥有轻量简化的语法、一些有用的新功能，并且支持更多新语言。
 
-在golang/protobuf Github 源码库里还有针对 Go 语言的生成器， 对更多语言的支持正在开发中。 你可以在 [proto3语言指南](https://blog.csdn.net/hulinku/article/details/80827018)里找到更多内容， 在与当前默认版本的发布说明比较，看到两者的主要不同点。更多关于 proto3 的文档很快就会出现。虽然你可以使用 proto2 (当前默认的 protocol buffers 版本)， 我们通常建议你在 gRPC 里使用 proto3，因为这样你可以使用 gRPC 支持全部范围的的语言，并且能避免 proto2 客户端与 proto3 服务端交互时出现的兼容性问题，反之亦然。
+在golang/protobuf Github 源码库里还有针对 Go 语言的生成器， 对更多语言的支持正在开发中。
+
+ 你可以在 [proto3语言指南](https://blog.csdn.net/hulinku/article/details/80827018)里找到更多内容， 在与当前默认版本的发布说明比较，看到两者的主要不同点。

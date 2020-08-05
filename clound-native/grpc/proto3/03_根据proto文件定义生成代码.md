@@ -42,6 +42,6 @@ path/to/file.proto
 
 ## 案例：以生成go代码为例
 
-**前提是要安装 protoc 工具**[未安装的可参考](../docs/01_grpc-go安装.md)
+**前提是要安装 protoc 工具**([未安装的可参考](../docs/01_grpc-go安装.md))
 
 [具体实践请看](../docs/03_初步使用.md)
