@@ -3,6 +3,9 @@ package service
 import (
 	"context"
 	"strconv"
+	"time"
+
+	"github.com/golang/protobuf/ptypes/timestamp"
 )
 
 type ProdService struct {
@@ -44,8 +47,13 @@ func (p *ProdService) GetProdNameList(ctx context.Context, req *QueryRequest) (*
 }
 
 func (p *ProdService) GetProdInfo(ctx context.Context, req *ProdRequest) (*Product, error) {
+	// 增加时间戳
+	t := timestamp.Timestamp{Seconds: time.Now().Unix()}
 	return &Product{
-		BaseModel: &BaseModel{UUID: 10000001},
+		BaseModel: &BaseModel{
+			UUID:     10000001,
+			CreateAt: &t,
+		},
 		ProdID:    1,
 		ProdName:  "华为 P10",
 		ProdPrice: 6999.00,

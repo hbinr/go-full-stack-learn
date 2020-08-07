@@ -39,3 +39,13 @@ cd .. && cd pbfile && protoc --go_out=plugins=grpc:../service --go_opt=paths=sou
 如果我们开发的时候有个多服务，难道需要写多个 bat 脚本吗？ 
 
 当然是不需要的，将上述命令末尾 `product.proto` 改为 `*.proto`，就可以将所有的 `.proto` 文件都生成对应go代码
+
+**注意：**
+- 每次使用命令生成代码后，在我们自己的 service 层需要再重新声明package，尽管我们之前声明过，按`alt + enter`，选择 `rename packages`，选择 `service`。 未遇到此问题的请忽略
+
+需要重新声明示例，如图：
+
+![代码生成后，service层需重新声明](../img/代码生成后，service层需重新声明.png)
+
+
+

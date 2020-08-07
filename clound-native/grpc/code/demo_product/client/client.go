@@ -26,11 +26,23 @@ func main() {
 		ProdID:   40,
 		ProdArea: 0,
 	})
+	if err != nil {
+		log.Fatal("GetProdName 获取商品名称异常，err:", err)
+	}
 	prodList, err := prodClient.GetProdNameList(context.Background(), &service.QueryRequest{PageSize: 5})
 	if err != nil {
-		log.Fatal("调用商品服务异常，err:", err)
+		log.Fatal("GetProdNameList 获取商品名称列表异常，err:", err)
+	}
+
+	prodInfo, err := prodClient.GetProdInfo(context.Background(), &service.ProdRequest{
+		ProdID:   40,
+		ProdArea: 0,
+	})
+	if err != nil {
+		log.Fatal("GetProdInfo 获取商品信息异常，err:", err)
 	}
 
 	fmt.Println("调用 GetProdName 接口成功，商品名称为：", prodResp.ProdName)
-	fmt.Println("调用 GetProdNameList 接口成功，商品列表为：", prodList)
+	fmt.Println("调用 GetProdNameList 接口成功，商品名称为：", prodList)
+	fmt.Println("调用 GetProdInfo 接口成功，商品信息为：", prodInfo)
 }

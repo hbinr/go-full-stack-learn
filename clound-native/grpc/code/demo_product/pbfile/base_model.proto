@@ -3,6 +3,11 @@ syntax = "proto3";
 package model;
 option go_package = "go-full-stack-learn/clound-native/grpc/code/demo_product/pbfile";
 
+import "google/protobuf/timestamp.proto";
+
 message BaseModel {
     int64 UUID = 1;
+    google.protobuf.Timestamp CreateAt = 2;
+    google.protobuf.Timestamp UpdateAt = 3;
+    google.protobuf.Timestamp DeleteAt = 4;
 }
