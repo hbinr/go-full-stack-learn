@@ -2,6 +2,9 @@
 
 https://blog.csdn.net/qq_43573375/article/details/107543592
 
+**如何在 Windows 上通过 Kitematic 使用 Docker**
+https://linux.cn/article-6131-1.html?pr
+
 # Linux 安装 docker
 
 [centos 安装 Docker 官方教程](https://docs.docker.com/engine/install/centos/)
