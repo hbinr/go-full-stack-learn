@@ -153,3 +153,13 @@ skip-character-set-client-handshake
 skip-name-resolve
 
 ```
+
+## 八.正确的启动方式：
+如果我们centos关机了，下次还想启动mysql容器，光使用 `docker run mysql:5.7`是不可行的，会提示你：
+> Database is uninitialized and password option is not specified You need to specify one of MYSQL_ROOT_PASSWORD, MYSQL_ALLOW_EMPTY_PASSWORD and MYSQL_RANDOM_ROOT_PASSWORD
+
+正确应该是；
+```sh
+[root@xxxxxx ~]# docker run --name mysql_01 -e MYSQL_ROOT_PASSWORD=123456  -d mysql
+```
+注意 `--name mysql_01` 这个名字可以自己指定，但是不要和以存在的容器名冲突
