@@ -133,29 +133,3 @@ sudo systemctl restart docker
 ```
 
 加速地址是自己阿里云账号生成的，填入自己的加速地址即可
-
-### 4.常用 Docker 命令
-
-更多命令详解，请访问：http://www.docker.org.cn/dockerppt/106.html:
-
------------------ docker ps 查看当前正在运行的容器
-
------------------ docker ps -a 查看所有容器的状态
-
------------------ docker start/stop id/name 启动/停止某个容器
-
------------------ docker attach id 进入某个容器(使用 exit 退出后容器也跟着停止运行)
-
------------------ docker exec -ti id 启动一个伪终端以交互式的方式进入某个容器（使用 exit 退出后容器不停止运行）
-
------------------ docker images 查看本地镜像
-
------------------ docker rm id/name 删除某个容器
-
------------------ docker rmi id/name 删除某个镜像
-
------------------ docker run --name test -ti ubuntu /bin/bash 复制 ubuntu 容器并且重命名为 test 且运行，然后以伪终端交互式方式进入容器，运行 bash
-
------------------ docker build -t soar/centos:7.1 . 通过当前目录下的 Dockerfile 创建一个名为 soar/centos:7.1 的镜像
-
------------------ docker run -d -p 2222:22 --name test soar/centos:7.1 以镜像 soar/centos:7.1 创建名为 test 的容器，并以后台模式运行，并做端口映射到宿主机 2222 端口，P 参数重启容器宿主机端口会发生改变
