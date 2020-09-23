@@ -87,6 +87,8 @@ docker pull bitnami/redis
 ```sh
 ##单个镜像删除，相当于：docker rmi redis:latest
 docker rmi redis
+## 删除指定版本
+docker rmi redis:6.0
 ##强制删除(针对基于镜像有运行的容器进程)
 docker rmi -f redis
 ##多个镜像删除，不同镜像间以空格间隔

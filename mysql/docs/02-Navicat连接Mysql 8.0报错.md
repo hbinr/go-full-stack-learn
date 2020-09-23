@@ -12,7 +12,7 @@
 
 ```sh
 [root@localhost ~]# docker exec -it mysql bash        //进入Mysql的伪窗口
-root@da94c9c49755:/# mysql -u root -p   //回车输入开始docker运行镜像中的root密码进入mysql环境
+root@da94c9c49755:/# mysql -uroot -p   //回车输入开始docker运行镜像中的root密码进入mysql环境
 
 ```
 
@@ -20,9 +20,31 @@ root@da94c9c49755:/# mysql -u root -p   //回车输入开始docker运行镜像�
 
 ```sh
 mysql> use mysql;
-mysql> ALTER USER 'root'@'%' IDENTIFIED BY 'root' PASSWORD EXPIRE NEVER;    //修改root用户的加密规则
-mysql> ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root'; //修改root用户的密码为root
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'root' PASSWORD EXPIRE NEVER;    //修改root用户的加密规则
+
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root'; //修改root用户的密码为root
 mysql> flush privileges;     //刷新权限
+```
+
+如果报错 ERROR 1396 (HY000): Operation ALTER USER failed for 'root'@'%' ：
+
+则是远程访问权限不正确，先选择数据库，查看一下再更改：
+
+```sh
+use mysql;
+Database changed
+
+update user set host = 'localhost' where user ='root';
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root' PASSWORD EXPIRE NEVER;
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+
+update user set host = '%' where user ='root';
+
+## 远程链接也直接就解决了
+
+FLUSH PRIVILEGES;
 ```
 
 ## 测试

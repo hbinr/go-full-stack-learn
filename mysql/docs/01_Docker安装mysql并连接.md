@@ -37,15 +37,69 @@ mysql               5.7                 8679ced16d20        7 days ago          
 - `TAG`表示 mysql 版本
 - `IMAGE ID` 表示镜像 ID
 
-### 四.通过镜像创建 mysql 容器并运行
+## 四.mysql 配置
+
+参考：https://www.cnblogs.com/qiaoxin/p/10844492.html
+
+1. 在 /mydata/mysql/conf 目录下新建 my.cnf 文件，填入以下内容：
 
 ```sh
-docker run -p 3306:3306 --name mysql
--v /mydata/mysql/conf:/etc/mysql
--v /mydata/mysql/log:/var/log/mysql
--v /mydata/mysql/data:/var/lib/mysql
--e MYSQL_ROOT_PASSWORD=123456
--d mysql:5.7
+ # mysql 5.7 配置
+[client]
+default-character-set = utf8
+
+[mysql]
+default-character-set = utf8
+
+[mysqld]
+init_connect='SET collation_connection = utf8_unicode_ci'
+init_connect='SET NAMES utf8'
+character-set-server=utf8
+collation-server=utf8_unicode_ci
+skip-character-set-client-handshake
+skip-name-resolve
+
+ # mysql 8.0+ 配置
+[client]
+default-character-set=utf8
+
+[mysql]
+default-character-set=utf8
+
+[mysqld]
+user=mysql
+character-set-server=utf8
+default_authentication_plugin=mysql_native_password
+secure_file_priv=/var/lib/mysql
+expire_logs_days=7
+sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+max_connections=1000
+
+```
+
+- 设置编码为 utf8
+- skip-name-resolve 跳过域名解析，解决 mysql 连接慢的问题
+- secure_file_priv=/var/lib/mysql ，MYSQL 新特性 secure_file_priv 对读写文件的影响，需要在配置中加入该行内容
+
+### 五.通过镜像创建 mysql 容器并运行
+
+```sh
+## mysql 5.7
+docker run -p 3306:3306 --name mysql \
+-v /mydata/mysql/conf:/etc/mysql \
+-v /mydata/mysql/log:/var/log/mysql \
+-v /mydata/mysql/data:/var/lib/mysql \
+-e MYSQL_ROOT_PASSWORD=123456 \
+-d mysql:5.7 \
+
+
+## mysql 8.0  /mydata和/home/hblock/MyData 目录是自定义的
+docker run -p 3306:3306 --name mysql \
+-v /home/hblock/MyData/mysql/conf:/etc/mysql \
+-v /home/hblock/MyData/mysql/log:/var/log/mysql \
+-v /home/hblock/MyData/mysql/data:/var/lib/mysql \
+-e MYSQL_ROOT_PASSWORD=123456 \
+-d mysql
 ```
 
 - --name ：当前启动的容器的名字
@@ -72,13 +126,54 @@ docker run -p 3306:3306 --name mysql
 docker ps
 ```
 
-输出结果：
+发现没有输出结果
+
+**问题：**
+
+- 执行 docker run ... 后，容器处于 exited 状态，希望能够出入 up 状态，可以 exec 进去查看
+
+**原因：**
+
+- docker 容器执行任务完成后就会处于 exited 状态
+
+先使用以下命令查看所有容器，包括不运行的容器
+
+```sh
+docker ps -a
 
 ```
-[root@localhost /]# docker ps
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES
-cd5561897cf2        mysql:5.7           "docker-entrypoint.s…"   6 minutes ago       Up 6 minutes        0.0.0.0:3306->3306/tcp, 33060/tcp   mysql
+
+**输出结果：**
+
 ```
+hblock@hblock:~/MyData$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS               NAMES
+5a6f4db70942        mysql               "docker-entrypoint.s…"   12 seconds ago      Exited (1) 9 seconds ago                       mysql
+      0.0.0.0:3306->3306/tcp, 33060/tcp   mysql
+```
+
+可以看到刚刚容器名为 mysql 的容器已经存在了，并且有个 `Exited (1) 9 seconds ago` 状态，表示容器已经退出
+
+这是 docker 的机制：要使 Docker 容器后台运行，就必须有一个前台进程。
+
+解决方案：将你要运行的程序以前台进程的形式运行。
+
+```sh
+##启动一个或多个已经被停止的容器
+docker start redis
+
+
+##或者重启容器
+docker restart redis
+```
+
+如果还不行，仍旧存在上述的问题，很可能是容器里的运行的代码报错了，然后容器 Exited (1) 3 seconds ago 了
+
+`docker logs -f container_id `能看到哪里错了
+
+目录挂载错误请看：https://www.cnblogs.com/linjiqin/p/11465804.html
+
+我遇到的问题是需要再配置文件中加入：`secure_file_priv=/var/lib/**mysql`
 
 ### 六.进入容器
 
@@ -94,65 +189,11 @@ docker exec -it mysql /bin/bash
 root@cd5561897cf2:/#
 ```
 
-root@cd5561897cf2:/# ---》 表示 root 角色，后面的数字和字母组合表示该容器的 ID
+- -i: 以交互模式运行容器，通常与 -t 同时使用；
+- -t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；
+- root@cd5561897cf2:/# ---》 表示 root 角色，后面的数字和字母组合表示该容器的 ID
 
 `exit`命令可退出当前容器
-
-## 七.mysql 配置
-
-参考：https://www.cnblogs.com/qiaoxin/p/10844492.html
-
-1. 在 /mydata/mysql/conf 目录下新建 my.cnf 文件，填入以下内容：
-
-```sh
-[client]
-default-character-set = utf8
-
-[mysql]
-default-character-set = utf8
-
-[mysqld]
-init_connect='SET collation_connection = utf8_unicode_ci'
-init_connect='SET NAMES utf8'
-character-set-server=utf8
-collation-server=utf8_unicode_ci
-skip-character-set-client-handshake
-skip-name-resolve
-
-```
-
-- 设置编码为 utf8
-- skip-name-resolve 跳过域名解析，解决 mysql 连接慢的问题
-
-配置完成后，要重启 mysql 容器，`docker restart mysql`
-
-2. 进入 mysql 容器，查看是否配置成功
-
-```sh
-docker exec -it mysql /bin/bash
-
-cat /etc/mysql/my.cnf
-```
-
-输出结果：
-
-```sh
-root@cd5561897cf2:/# cat /etc/mysql/my.cnf
-[client]
-default-character-set = utf8
-
-[mysql]
-default-character-set = utf8
-
-[mysqld]
-init_connect='SET collation_connection = utf8_unicode_ci'
-init_connect='SET NAMES utf8'
-character-set-server=utf8
-collation-server=utf8_unicode_ci
-skip-character-set-client-handshake
-skip-name-resolve
-
-```
 
 ## 八.正确的启动方式：
 
@@ -176,3 +217,5 @@ mysql 容器启动成功后，可以通过"EXEC"查看数据库启动是否成�
 mysql -u root -p 123456
 ```
 
+参考：
+https://www.jianshu.com/p/d297b0be4157
