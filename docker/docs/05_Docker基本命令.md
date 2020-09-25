@@ -1,19 +1,21 @@
 # Docker 命令
 
+[Docker 官方命令文档——Command-line reference](https://docs.docker.com/reference/)
+
 ### 1、Docker 容器信息
 
 ```sh
 ##查看docker容器版本
 docker version
 
-##查看docker容器信息
+##查看docker系统信息，包括镜像和容器的信息等
 docker info
 
 ##查看docker容器帮助
 docker --help
 ```
 
-### 2、镜像操作
+### 2、镜像命令操作
 
 **提示：对于镜像的操作可使用镜像名、镜像长 ID 和短 ID。**
 
@@ -22,7 +24,8 @@ docker --help
 ```sh
 ##列出本地 images
 docker images
-##含中间映像层
+
+##-a all 列出所有镜像
 docker images -a
 ```
 
@@ -31,7 +34,8 @@ docker images -a
 ```sh
 ##只显示镜像 ID
 docker images -q
-##含中间映像层
+
+##显示所有镜像的镜像ID
 docker images -qa
 ```
 
@@ -59,6 +63,8 @@ docker search mysql
 
 ## --filter=stars=600：只显示 starts>=600 的镜像
 docker search --filter=stars=600 mysql
+同：
+docker search -f=stars=600 mysql
 
 ## --no-trunc 显示镜像完整 DESCRIPTION 描述
 docker search --no-trunc mysql
@@ -74,15 +80,36 @@ docker search  --automated mysql
 ```sh
 ##下载Redis官方最新镜像，相当于：docker pull redis:latest
 docker pull redis
+##下载指定版本的镜像
+docker pull redis:6.0
 ##下载仓库所有Redis镜像
 docker pull -a redis
 ##下载私人仓库镜像
 docker pull bitnami/redis
+
 ```
 
 ![](https://img2018.cnblogs.com/blog/1659331/201905/1659331-20190521112716615-10141164.png)
 
+```sh
+
+hblock@hblock:~$ docker pull redis
+Using default tag: latest  ## 不写tag，默认下载最新版本
+latest: Pulling from library/redis
+d121f8d1c412: Already exists  ## 共用之前存在的文件，不用再下载。联合文件系统特色，节省内存
+2f9874741855: Pull complete   ## 开始分层下载不存在的文件
+d92da09ebfd4: Pull complete
+bdfa64b72752: Pull complete
+e748e6f663b9: Pull complete
+eb1c8b66e2a1: Pull complete
+Digest: sha256:1cfb205a988a9dae5f025c57b92e9643ec0e7ccff6e66bc639d8a5f95bba928c   ## 签名
+Status: Downloaded newer image for redis:latest
+docker.io/library/redis:latest  ## docker pull 的真实地址，即docker pull docker.io/library/redis:latest
+```
+
 #### 2.4、镜像删除
+
+**rmi** 为 `remove image` 的简写，可以通过镜像名称和镜像 ID 删除
 
 ```sh
 ##单个镜像删除，相当于：docker rmi redis:latest
@@ -94,7 +121,7 @@ docker rmi -f redis
 ##多个镜像删除，不同镜像间以空格间隔
 docker rmi -f redis tomcat nginx
 ##删除本地全部镜像
-docker rmi -f $(docker images -q)
+docker rmi -f $(docker images -aq)
 ```
 
 #### 2.5、镜像构建
@@ -102,23 +129,36 @@ docker rmi -f $(docker images -q)
 ```sh
 ##（1）编写dockerfile
 cd /docker/dockerfile
-## 编写相关配置
-vim mycentos
 
 ##（2）构建docker镜像
 docker build -f /docker/dockerfile/mycentos -t mycentos:1.1
 ```
 
-### 3、容器操作
+### 3、容器命令操作
 
-**提示：对于容器的操作可使用 CONTAINER ID 或 NAMES。**
+**提示：**
 
-#### 3.1、容器启动
+- 有了镜像才可以操作容器
+- 对于容器的操作可使用 容器 ID(CONTAINER ID) 或 容器名(NAMES)。
+
+#### 3.1、容器启动与停止
+
+##### 3.1.1 启动
+
+`docker run` [可选参数] 解析：
+
+- -i 以交互模式运行容器；
+- -t 为容器重新分配一个伪输入终端；
+- --name 为容器指定一个名称
+- -p 指定容器的端口，
+- -p 8080:8080 主机端口:容器端口映射起来，常用
+- -P 随机指定容器的端口，注意是大写的 P
 
 ```sh
-##新建并启动容器，参数：-i 以交互模式运行容器；-t 为容器重新分配一个伪输入终端；--name 为容器指定一个名称
-docker run -i -t --name mycentos
-##后台启动容器，参数：-d 已守护方式启动容器
+##启动并进入容器，容器名为 mycentos
+docker run -it  mycentos
+
+##后台启动容器
 docker run -d mycentos
 ```
 
@@ -136,6 +176,16 @@ docker start redis
 
 ##重启容器
 docker restart redis
+```
+
+##### 3.1.1 停止
+
+```sh
+##停止一个运行中的容器
+docker stop redis
+##杀掉一个运行中的容器
+docker kill redis
+
 ```
 
 #### 3.2、容器进程
@@ -188,6 +238,7 @@ docker ps
 docker ps -q
 ##查看正在运行+历史运行过的容器
 docker ps -a
+
 ```
 
 ![](https://img2018.cnblogs.com/blog/1659331/201905/1659331-20190521132255698-500560462.png)
@@ -217,24 +268,27 @@ docker inspect redis
 docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' redis
 ```
 
-#### 3.6、容器的停止与删除
+#### 3.6、容器的删除
+
+**注意：**
+支持容器名和容器 id
 
 ```sh
-##停止一个运行中的容器
-docker stop redis
-##杀掉一个运行中的容器
-docker kill redis
 ##删除一个已停止的容器
 docker rm redis
+##也可以通过容器id删除
+docker rm 4f4bdd65af24
 ##删除一个运行中的容器
 docker rm -f redis
-##删除多个容器
+##删除所有容器
 docker rm -f $(docker ps -a -q)
+##也可应用Linux的管道符连删除所有容器
 docker ps -a -q | xargs docker rm
 ## -l 移除容器间的网络连接，连接名为 db
 docker rm -l db
 ## -v 删除容器，并删除容器挂载的数据卷
 docker rm -v redis
+
 ```
 
 #### 3.7、生成镜像

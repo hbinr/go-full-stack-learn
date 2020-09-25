@@ -23,3 +23,7 @@
 - 仓库分为公有仓库和私有仓库！
 - Docker Hub(默认是国外的）
 - 阿里云…都有容器服务器(可以配置镜像加速！)
+
+参考：
+
+[B 站视频](https://www.bilibili.com/video/BV1og4y1q7M4?p=8)
