@@ -2,6 +2,10 @@
 
 [Docker 官方命令文档——Command-line reference](https://docs.docker.com/reference/)
 
+**命令图示汇总：**
+
+![](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601041996671&di=9d94ed2068dbbce890194f23e1a01591&imgtype=0&src=http%3A%2F%2Fimg2018.cnblogs.com%2Fblog%2F737565%2F201810%2F737565-20181016222632248-308675921.png)
+
 ### 1、Docker 容器信息
 
 ```sh
