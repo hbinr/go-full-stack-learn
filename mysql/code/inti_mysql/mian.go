@@ -11,7 +11,7 @@ var DB *sql.DB
 
 // initMysql 初始化MySQL
 func initMysql() (err error) {
-	dsn := "root:123456@tcp(127.0.0.1:3306)/gateway"
+	dsn := "root:123456@tcp(127.0.0.1:3306)/gateway?charset=utf8mb4&parseTime=True"
 	// 不会校验账号密码是否正确
 	// 注意！！！这里不要使用 :=，我们是给全局变量赋值，然后在main函数中使用全局变量db
 	DB, err = sql.Open("mysql", dsn)

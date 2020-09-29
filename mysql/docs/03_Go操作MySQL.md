@@ -35,7 +35,7 @@ var DB *sql.DB
 
 // initMysql 初始化MySQL
 func initMysql() (err error) {
-	dsn := "root:123456@tcp(127.0.0.1:3306)/gateway"
+	dsn := "root:123456@tcp(127.0.0.1:3306)/gateway?charset=utf8mb4&parseTime=True"
 	// 不会校验账号密码是否正确
 	// 注意！！！这里不要使用 :=，我们是给全局变量赋值，然后在main函数中使用全局变量db
 	DB, err = sql.Open("mysql", dsn)
@@ -73,7 +73,7 @@ func main() {
 
 #### SetMaxOpenConns
 
-设置到数据库的最大打开连接数，如果 MaxIdleConns 大于 0 并且新的 MaxOpenConns 小于 MaxIdleConns，那么将减少 MaxIdleConns 以匹配新的de MaxOpenConns 限制。
+设置到数据库的最大打开连接数，如果 MaxIdleConns 大于 0 并且新的 MaxOpenConns 小于 MaxIdleConns，那么将减少 MaxIdleConns 以匹配新的 de MaxOpenConns 限制。
 
 如果 n <= 0，则打开的连接数没有限制。默认值为 0（无限制）。
 
