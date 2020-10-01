@@ -7,9 +7,9 @@ import (
 
 // Demo Demo结构体
 type Demo struct {
-	ID   int
-	Age  int
-	Name string
+	ID   int    `db:"id"`
+	Age  int    `db:"age"`
+	Name string `db:"name"`
 }
 
 // queryRowDemo 查询单条数据示例
@@ -85,6 +85,59 @@ func deleteRowDemo() {
 
 }
 
+// insertRowByNameExecDemo 使用NamedExec()操作sql，针对增删改
+func insertRowByNameExecDemo() {
+	sqlStr := `insert into demo(age,name) values(:age,:name)`
+	// 使用结构体
+	ronger := Demo{Age: 19, Name: "ronger"}
+
+	res, err := db.DB.NamedExec(sqlStr, &ronger)
+	if err != nil {
+		fmt.Println("insert demo's data failed,err:", err)
+		return
+	}
+	id, err := res.LastInsertId()
+	if err != nil {
+		fmt.Println("res.LastInsertId() failed, err:", err)
+		return
+	}
+	fmt.Println("insert demo's data success, 5id:", id)
+
+}
+
+// queryRowByNamedQueryDemo 使用NamedExec()操作sql，针对查
+func queryRowByNamedQueryDemo() {
+	sqlStr := `SELECT * from demo WHERE name=:name`
+	demo := Demo{
+		Name: "Bob",
+	}
+	rows, err := db.DB.NamedQuery(sqlStr, &demo)
+	if err != nil {
+		fmt.Println("select demo's data by NamedQuery failed,err:", err)
+		return
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		// 方式一：使用StructScan，一次扫描一行
+		var d Demo
+		err := rows.StructScan(&d)
+		if err != nil {
+			fmt.Println("rows.StructScan failed, err:", err)
+			continue
+		}
+		fmt.Println("row's data :", d)
+
+		// 方式二：使用SliceScan，一次扫描多行
+		res, err := rows.SliceScan()
+		if err != nil {
+			fmt.Println("rows.SliceScan failed,err:", err)
+			return
+		}
+		fmt.Println("rows's res :", res)
+	}
+}
+
 func main() {
 	if err := db.InitMysql(); err != nil {
 		fmt.Println("sqlx.InitMysql failed,err:", err)
@@ -93,7 +146,9 @@ func main() {
 	defer db.DB.Close()
 	queryRowDemo()
 	queryMultiRowDemo()
-	insertRowDemo()
-	updateRowDemo()
-	deleteRowDemo()
+	// insertRowDemo()
+	// updateRowDemo()
+	// deleteRowDemo()
+	// insertRowByNameExecDemo()
+	queryRowByNamedQueryDemo()
 }
