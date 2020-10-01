@@ -130,6 +130,13 @@ EOF
 sudo systemctl daemon-reload
 
 sudo systemctl restart docker
+
 ```
 
 加速地址是自己阿里云账号生成的，填入自己的加速地址即可
+
+### 4.取消开机自启 docker
+
+```sh
+sudo systemctl disable docker.service
+```
