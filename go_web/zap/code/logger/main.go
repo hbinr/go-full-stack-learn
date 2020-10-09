@@ -21,7 +21,7 @@ func main() {
 	testHTTPGet2("http://www.baidu.com")
 }
 
-// InitLogger 初始化 zap.Looer和sugarLogger
+// InitLogger 初始化 zap.Logger和sugarLogger
 func InitLogger() {
 	logger, _ = zap.NewProduction()
 	sugarLogger = logger.Sugar()

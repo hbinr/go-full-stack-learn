@@ -1,0 +1,6 @@
+2020-10-08T10:42:14.381+0800	ERROR	custom_logger/main.go:62	Error fetching url..	{"url": "www.baidu.com", "error": "Get \"www.baidu.com\": unsupported protocol scheme \"\""}
+2020-10-08T10:42:14.473+0800	INFO	custom_logger/main.go:67	Success..	{"statusCode": "200 OK", "url": "http://www.baidu.com"}
+2020-10-08T10:42:14.473+0800	DEBUG	custom_logger/main.go:76	Trying to hit GET request for www.baidu.com
+2020-10-08T10:42:14.473+0800	ERROR	custom_logger/main.go:79	Error fetching URL www.baidu.com : Error = Get "www.baidu.com": unsupported protocol scheme ""
+2020-10-08T10:42:14.473+0800	DEBUG	custom_logger/main.go:76	Trying to hit GET request for http://www.baidu.com
+2020-10-08T10:42:14.517+0800	INFO	custom_logger/main.go:81	Success! statusCode = 200 OK for URL http://www.baidu.com
