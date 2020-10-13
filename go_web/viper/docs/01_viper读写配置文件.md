@@ -46,6 +46,7 @@ Viper会按照下面的优先级。每个项目的优先级都高于它下面的
 
 ## 把值存入Viper
 
+
 ### 建立默认值
 
 一个好的配置系统应该支持默认值。键不需要默认值，但如果没有通过配置文件、环境变量、远程配置或命令行标志（flag）设置键，则默认值非常有用。
@@ -55,6 +56,20 @@ Viper会按照下面的优先级。每个项目的优先级都高于它下面的
 viper.SetDefault("ContentDir", "content")
 viper.SetDefault("LayoutDir", "layouts")
 viper.SetDefault("Taxonomies", map[string]string{"tag": "tags", "category": "categories"})
+```
+
+Viper是开箱即用的。你不需要配置或初始化即可开始使用Viper。由于大多数应用程序都希望使用单个中央存储库管理它们的配置信息，所以viper包提供了这个功能。它类似于单例模式。
+
+当然你可以使用多个viper实例。每个都有自己独特的一组配置和值。每个人都可以从不同的配置文件，key value存储区等读取数据。每个都可以从不同的配置文件、键值存储等中读取。viper包支持的所有功能都被镜像为viper实例的方法。
+
+```go
+x := viper.New()
+y := viper.New()
+
+x.SetDefault("ContentDir", "content")
+y.SetDefault("ContentDir", "foobar")
+
+//...
 ```
 
 ### 读取配置文件
