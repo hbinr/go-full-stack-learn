@@ -57,22 +57,16 @@ func WatchConfigDemo() {
 	viper.SetConfigFile("config.yaml")
 	viper.AddConfigPath(".")
 
-	
-
-	// 实时监控配置
-	viper.WatchConfig()
-	// 配置文件发生变更之后会调用回调函数
-	viper.OnConfigChange(func(e fsnotify.Event) {
-		fmt.Println("Config file changed:", e.Name)
-	})
-
-	// 验证监控配置示例
-	r := gin.Default()
-	r.GET("/get", func(c *gin.Context) {
-		c.String(http.StatusOK, viper.GetString("version"))
-	})
-	r.Run()
-}	return
+	// 查找并读取配置文件
+	if err := viper.ReadInConfig(); err != nil {
+		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
+			// 配置文件未找到错误；如果需要可以忽略
+			fmt.Println("未找到配置文件，err:", err)
+			return
+		}
+		// 配置文件被找到，但产生了另外的错误
+		fmt.Println("配置文件被找到，但产生了另外的错误，err:", err)
+		return
 	}
 
 	// 实时监控配置
