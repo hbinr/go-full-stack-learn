@@ -13,6 +13,7 @@ require (
 	github.com/jmoiron/sqlx v1.2.1-0.20200615141059-0794cb1f47ee
 	github.com/qiniu/qmgo v0.6.2
 	github.com/shopspring/decimal v1.2.0
+	github.com/spf13/pflag v1.0.3
 	github.com/spf13/viper v1.7.1
 	github.com/streadway/amqp v0.0.0-20190827072141-edfb9018d271
 	go.mongodb.org/mongo-driver v1.4.0
