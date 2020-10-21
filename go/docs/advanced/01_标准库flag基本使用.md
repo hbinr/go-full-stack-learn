@@ -125,7 +125,14 @@ func main() {
 	flag.Parse()
 	fmt.Println(name, age, married, delay)
 	//返回命令行参数后的其他参数
-	fmt.Println(flag.Args())
+	fmt.Println(flag.Args())Conclusion
+Even though I have a section titled “Don’t Do This”, the purpose of this post is not meant to be proscriptive. Rather, I want to encourage people to think at the boundary conditions - that’s where all the edge cases happen.
+
+I personally found the declare-at-point-of-use pattern extremely useful. As a result I don’t particularly run into issues that I’ve observed a number of people have run into.
+
+I however also run into cases where I end up accidentally writing Java style interfaces - typically after I come back from a stint of writing code in Python or Java. The desire to overengineer and “class all the things” something is quite strong especially when writing Go code after writing a lot of object oriented code.
+
+Hence this post also serves as a self-reminder on what the path to pain-free code looks like. Tell me what you think!
 	//返回命令行参数后的其他参数个数
 	fmt.Println(flag.NArg())
 	//返回使用的命令行参数个数

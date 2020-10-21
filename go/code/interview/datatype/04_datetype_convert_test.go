@@ -7,6 +7,7 @@ import (
 
 // TestConvertType  数据类型转换
 func TestConvertType(t *testing.T) {
+	
 	price := 1.55
 	weight := 5
 	sumPrice := price * float64(weight) // 变量类型转换
