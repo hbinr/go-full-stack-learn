@@ -123,12 +123,14 @@ docker run -d -p 8848:8848  \
 -e MYSQL_DATABASE_NUM=1 \
 -v /data/home/hblock/MyData/nacos/init.d/custom.properties:/home/nacos/init.d/custom.properties \
 -v /data/home/hblock/MyData/nacos/logs:/home/nacos/logs \
---restart always --name nacos nacos/nacos-server
+--restart always
+--name nacos nacos/nacos-server
 ```
 
 **参数解析：**
 
 - -e MODE=standalone 以单机模式运行，nacos 1.2 之后，默认以集群(cluster)方式运行
+- --restart always 开机自启 nacos 容器，默认 no
 
 [集群配置详情见 Nacos 集群配置参数官方文档](https://nacos.io/zh-cn/docs/quick-start-docker.html)
 
@@ -140,7 +142,13 @@ docker start nacos
 
 #### 7.测试
 
-访问 http://localhost:8848/nacos/ ，账号默认 nacos、密码默认 nacos
+# 访问 http://localhost:8848/nacos/
+
+#### 8.取消开机自启
+
+```sh
+docker update --restart=no nacos
+```
 
 _参考：_
 
