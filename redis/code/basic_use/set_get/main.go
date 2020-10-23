@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"go-full-stack-learn/redis/code/rdb"
+
+	"hb.study/redis/code/rdb"
 
 	"github.com/go-redis/redis"
 )

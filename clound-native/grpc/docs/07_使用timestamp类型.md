@@ -23,7 +23,7 @@
 syntax = "proto3";
 
 package model;
-option go_package = "go-full-stack-learn/clound-native/grpc/code/demo_product/pbfile";
+option go_package = "hb.study/clound-native/grpc/code/demo_product/pbfile";
 
 // 1.导入timestamp.proto
 import "google/protobuf/timestamp.proto";

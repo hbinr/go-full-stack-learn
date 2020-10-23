@@ -171,7 +171,7 @@ func (log *Logger) MethodXXX(msg string, fields ...Field)
 
 我们执行上面的代码会得到如下输出结果：
 
-> {"level":"error","ts":1601641640.1690316,"caller":"logger/main.go:28","msg":"Error fetching url..","url":"www.baidu.com","error":"Get \"www.baidu.com\": unsupported protocol scheme \"\"","stacktrace":"main.testHTTPGet\n\t/home/hblock/Develop/WorkSpace/go/src/go-full-stack-learn/go_web/zap/code/logger/main.go:28\nmain.main\n\t/home/hblock/Develop/WorkSpace/go/src/go-full-stack-learn/go_web/zap/code/logger/main.go:20\nruntime.main\n\t/usr/local/go/src/runtime/proc.go:204"}
+> {"level":"error","ts":1601641640.1690316,"caller":"logger/main.go:28","msg":"Error fetching url..","url":"www.baidu.com","error":"Get \"www.baidu.com\": unsupported protocol scheme \"\"","stacktrace":"main.testHTTPGet\n\t/home/hblock/Develop/WorkSpace/go/src/hb.study/go_web/zap/code/logger/main.go:28\nmain.main\n\t/home/hblock/Develop/WorkSpace/go/src/hb.study/go_web/zap/code/logger/main.go:20\nruntime.main\n\t/usr/local/go/src/runtime/proc.go:204"}
 
 > {"level":"info","ts":1601641640.1990101,"caller":"logger/main.go:33","msg":"Success..","statusCode":"200 OK","url":"http://www.baidu.com"}
 
@@ -220,7 +220,7 @@ func testHTTPGet2(url string) {
 
 当你执行上面的代码会得到如下输出：
 
-> {"level":"error","ts":1601642124.335311,"caller":"logger/main.go:51","msg":"Error fetching URL www.baidu.com : Error = Get \"www.baidu.com\": unsupported protocol scheme \"\"","stacktrace":"main.testHTTPGet2\n\t/home/hblock/Develop/WorkSpace/go/src/go-full-stack-learn/go_web/zap/code/logger/main.go:51\nmain.main\n\t/home/hblock/Develop/WorkSpace/go/src/go-full-stack-learn/go_web/zap/code/logger/main.go:20\nruntime.main\n\t/usr/local/go/src/runtime/proc.go:204"}
+> {"level":"error","ts":1601642124.335311,"caller":"logger/main.go:51","msg":"Error fetching URL www.baidu.com : Error = Get \"www.baidu.com\": unsupported protocol scheme \"\"","stacktrace":"main.testHTTPGet2\n\t/home/hblock/Develop/WorkSpace/go/src/hb.study/go_web/zap/code/logger/main.go:51\nmain.main\n\t/home/hblock/Develop/WorkSpace/go/src/hb.study/go_web/zap/code/logger/main.go:20\nruntime.main\n\t/usr/local/go/src/runtime/proc.go:204"}
 
 > {"level":"info","ts":1601642124.367956,"caller":"logger/main.go:53","msg":"Success! statusCode = 200 OK for URL http://www.baidu.com"}
 

@@ -3,9 +3,10 @@ package main
 import (
 	"context"
 	"fmt"
-	"go-full-stack-learn/clound-native/grpc/code/demo_product/service"
-	"go-full-stack-learn/clound-native/grpc/code/demo_product/util"
 	"log"
+
+	"hb.study/clound-native/grpc/code/demo_product/service"
+	"hb.study/clound-native/grpc/code/demo_product/util"
 
 	"google.golang.org/grpc"
 )

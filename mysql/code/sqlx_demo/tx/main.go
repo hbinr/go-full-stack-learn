@@ -4,7 +4,8 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	"go-full-stack-learn/mysql/code/sqlx_demo/db"
+
+	"hb.study/mysql/code/sqlx_demo/db"
 )
 
 // transactionDemo 使用sqlx进行事务操作

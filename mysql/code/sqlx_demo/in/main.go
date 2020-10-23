@@ -3,9 +3,10 @@ package main
 import (
 	"database/sql/driver"
 	"fmt"
-	"go-full-stack-learn/mysql/code/sqlx_demo/db"
 	"strconv"
 	"strings"
+
+	"hb.study/mysql/code/sqlx_demo/db"
 
 	"github.com/jmoiron/sqlx"
 )
@@ -58,7 +59,7 @@ func QueryByIDs(ids []int) (demos []Demo, err error) {
 	query = db.DB.Rebind(query)
 	fmt.Println("查询的sql为：", query)
 	fmt.Println("拼接的参数为：", args)
-	// Select() 查询多条数据
+	// SlectByName() 查询多条数据
 	err = db.DB.Select(&demos, query, args...)
 	return
 }

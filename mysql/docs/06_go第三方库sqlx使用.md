@@ -15,7 +15,7 @@
 go get github.com/jmoiron/sqlx
 ```
 
-[文章详细代码](https://github.com/hblcok/go-full-stack-learn/tree/master/mysql/code/sqlx_demo)
+[文章详细代码](https://github.com/hblcok/hb.study/tree/master/mysql/code/sqlx_demo)
 
 ## 基本使用
 

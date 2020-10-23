@@ -10,7 +10,7 @@ import (
 )
 
 type User struct {
-	UserID   int64  `bson:"userID"`
+	UserID   int64  `bson:"id"`
 	UserName string `bson:"userName"`
 }
 
@@ -64,7 +64,7 @@ func Insert(ctx context.Context, cli *qmgo.QmgoClient) error {
 
 func FindOne(ctx context.Context, cli *qmgo.QmgoClient) error {
 	query := User{}
-	err := cli.Find(ctx, bson.M{"userID": 1}).One(&query)
+	err := cli.Find(ctx, bson.M{"id": 1}).One(&query)
 	if err != nil {
 		fmt.Println("查询数据异常，err:", err)
 		return err
@@ -74,13 +74,13 @@ func FindOne(ctx context.Context, cli *qmgo.QmgoClient) error {
 }
 
 func UpdateOne(ctx context.Context, cli *qmgo.QmgoClient) error {
-	err := cli.UpdateOne(ctx, bson.M{"userID": 1}, bson.M{"$set": bson.M{"userName": "test2"}})
+	err := cli.UpdateOne(ctx, bson.M{"id": 1}, bson.M{"$set": bson.M{"userName": "test2"}})
 	FindOne(ctx, cli)
 	return err
 }
 
 func DeleteOne(ctx context.Context, cli *qmgo.QmgoClient) error {
-	err := cli.Remove(ctx, bson.M{"userID": 1}) // 底层调用DeleteOne
+	err := cli.Remove(ctx, bson.M{"id": 1}) // 底层调用DeleteOne
 	if err != nil {
 		fmt.Println("删除数据异常，err:", err)
 		return err
@@ -89,7 +89,7 @@ func DeleteOne(ctx context.Context, cli *qmgo.QmgoClient) error {
 }
 
 func DeleteAll(ctx context.Context, cli *qmgo.QmgoClient) error {
-	res, err := cli.DeleteAll(ctx, bson.M{"userID": 1}) // 底层调用DeleteMany。返回删除个数
+	res, err := cli.DeleteAll(ctx, bson.M{"id": 1}) // 底层调用DeleteMany。返回删除个数
 	if err != nil {
 		fmt.Println("删除所有数据异常，err:", err)
 	}

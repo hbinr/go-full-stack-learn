@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package product_service;
 
-option go_package = "go-full-stack-learn/clound-native/grpc/code/demo_product/pbfile";
+option go_package = "hb.study/clound-native/grpc/code/demo_product/pbfile";
 
 // 引入 prod_model.proto 定义的内容
 import public "prod_model.proto";

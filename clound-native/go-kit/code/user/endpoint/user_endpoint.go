@@ -2,14 +2,15 @@ package endpoint
 
 import (
 	"context"
-	"go-full-stack-learn/clound-native/go-kit/code/user/service"
+
+	"hb.study/clound-native/go-kit/code/user/service"
 
 	"github.com/go-kit/kit/endpoint"
 )
 
 // 请求
 type UserRequest struct {
-	UserID int `json:"userID"`
+	UserID int `json:"id"`
 }
 
 // 响应

@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"go-full-stack-learn/mysql/code/sqlx_demo/db"
+
+	"hb.study/mysql/code/sqlx_demo/db"
 )
 
 // Demo Demo结构体
@@ -28,9 +29,9 @@ func queryRowDemo() {
 func queryMultiRowDemo() {
 	sqlStr := `select id,age,name from demo where id > ?`
 	var ds []Demo
-	// Select()返回多条数据
+	// SlectByName()返回多条数据
 	if err := db.DB.Select(&ds, sqlStr, 1); err != nil {
-		fmt.Println("db.DB.Select failed, err:", err)
+		fmt.Println("db.DB.SlectByName failed, err:", err)
 		return
 	}
 	fmt.Println("queryMultiRowDemo success, data:", ds)

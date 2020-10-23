@@ -4,18 +4,19 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"go-full-stack-learn/clound-native/go-kit/code/user/endpoint"
 	"net/http"
 	"strconv"
+
+	"hb.study/clound-native/go-kit/code/user/endpoint"
 )
 
 // DecodeUserRequest 解码请求参数
 func DecodeUserRequest(c context.Context, r *http.Request) (interface{}, error) {
-	// http:localhost:xxx?userID="xx"
-	if r.URL.Query().Get("userID") != "" {
-		userID, _ := strconv.Atoi(r.URL.Query().Get("userID"))
+	// http:localhost:xxx?id="xx"
+	if r.URL.Query().Get("id") != "" {
+		id, _ := strconv.Atoi(r.URL.Query().Get("id"))
 		return endpoint.UserRequest{
-			UserID: userID,
+			UserID: id,
 		}, nil
 	}
 	return nil, errors.New("请求参数错误")

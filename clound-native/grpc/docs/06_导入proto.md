@@ -10,7 +10,7 @@
 syntax = "proto3";
 
 package model;
-option go_package = "go-full-stack-learn/clound-native/grpc/code/demo_product/pbfile";
+option go_package = "hb.study/clound-native/grpc/code/demo_product/pbfile";
 
 message BaseModel {
     int64 UUID = 1;
@@ -23,7 +23,7 @@ syntax = "proto3";
 
 package model;
 
-option go_package = "go-full-stack-learn/clound-native/grpc/code/demo_product/pbfile";
+option go_package = "hb.study/clound-native/grpc/code/demo_product/pbfile";
 import "base_model.proto";
 
 message Product {
@@ -42,7 +42,7 @@ syntax = "proto3";
 
 package product_service;
 
-option go_package = "go-full-stack-learn/clound-native/grpc/code/demo_product/pbfile";
+option go_package = "hb.study/clound-native/grpc/code/demo_product/pbfile";
 
 message ProdRequest {
   int32 prodID = 1;
@@ -64,7 +64,7 @@ package product_service;
 // 改动一：引入 prod_model.proto 定义的内容
 import public "prod_model.proto";
 
-option go_package = "go-full-stack-learn/clound-native/grpc/code/demo_product/pbfile";
+option go_package = "hb.study/clound-native/grpc/code/demo_product/pbfile";
 
 message ProdRequest {
   int32 prodID = 1;

@@ -40,15 +40,15 @@ func GetUserScoreHandler(user CURD) gin.HandlerFunc {
 
 func TestInterface(t *testing.T) {
 
-	u := &UserService{}
-	var i interface{} = u
-	o, ok := i.(CURD) // 类型断言，判断实例u是否实现了接口CURD
-	if ok {
-		fmt.Println(o, ok)
-	} else {
-		fmt.Println("ss")
-	}
-	r := gin.Default()
-	r.GET("/get", GetUserScoreHandler(u))
-	r.Run()
+	//u := &UserService{}
+	//var i interface{} = u
+	//o, ok := i.(CURD) // 类型断言，判断实例u是否实现了接口CURD
+	//if ok {
+	//	fmt.Println(o, ok)
+	//} else {
+	//	fmt.Println("ss")
+	//}
+	//r := gin.Default()
+	//r.GET("/get", GetUserScoreHandler(u))
+	//r.Run()
 }

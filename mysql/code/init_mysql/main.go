@@ -34,7 +34,7 @@ func initMysql() (err error) {
 func main() {
 
 	if err := initMysql(); err != nil {
-		fmt.Printf("init db failed,err:%v\n", err)
+		fmt.Printf("setting db failed,err:%v\n", err)
 		return
 	}
 	defer DB.Close()
