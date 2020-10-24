@@ -19,7 +19,7 @@ var models = []interface{}{
 }
 
 // NewMySQL new db and retry connection when has error.
-func NewMySQL(c *conf.Config) (db *gorm.DB, err error) {
+func InitMySQL(c *conf.Config) (db *gorm.DB, err error) {
 	mysqlConfig := mysql.Config{
 		DSN:                       c.Mysql.DSN, // DSN data source name
 		DefaultStringSize:         191,         // string 类型字段的默认长度
