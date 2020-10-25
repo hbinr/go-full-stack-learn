@@ -3,10 +3,9 @@ package main
 import (
 	"fmt"
 
-	"hb.study/go-lib/di-lib/wire/code/advanced/user/conf"
-
 	"github.com/gin-gonic/gin"
-	"hb.study/go-lib/di-lib/wire/code/advanced/user/controller"
+	"hb.study/go-lib/di-lib/wire/code/advanced/internal/app/user/conf"
+	"hb.study/go-lib/di-lib/wire/code/advanced/internal/app/user/controller"
 )
 
 func main() {

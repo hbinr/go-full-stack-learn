@@ -4,10 +4,10 @@ import (
 	"fmt"
 
 	"github.com/fsnotify/fsnotify"
+	"hb.study/go-lib/di-lib/wire/code/advanced/internal/app/user/conf"
 
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
-	"hb.study/go-lib/di-lib/wire/code/advanced/user/conf"
 )
 
 const defaultConfigFile = "./config-test.yaml"

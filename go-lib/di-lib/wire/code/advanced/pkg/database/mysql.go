@@ -3,11 +3,9 @@ package database
 import (
 	"fmt"
 
-	"hb.study/go-lib/di-lib/wire/code/advanced/user/model"
-
 	"gorm.io/gorm/schema"
-
-	"hb.study/go-lib/di-lib/wire/code/advanced/user/conf"
+	"hb.study/go-lib/di-lib/wire/code/advanced/internal/app/user/conf"
+	"hb.study/go-lib/di-lib/wire/code/advanced/internal/app/user/model"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"

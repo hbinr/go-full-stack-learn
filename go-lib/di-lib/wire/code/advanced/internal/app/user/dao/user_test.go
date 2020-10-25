@@ -4,9 +4,7 @@ import (
 	"testing"
 
 	"github.com/spf13/pflag"
-
 	"hb.study/go-lib/di-lib/wire/code/advanced/pkg/database"
-
 	"hb.study/go-lib/di-lib/wire/code/advanced/setting"
 
 	"gorm.io/gorm"

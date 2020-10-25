@@ -4,14 +4,12 @@ import (
 	"fmt"
 	"strconv"
 
+	"hb.study/go-lib/di-lib/wire/code/advanced/internal/app/user/model"
+	"hb.study/go-lib/di-lib/wire/code/advanced/internal/app/user/service"
+	"hb.study/go-lib/di-lib/wire/code/advanced/pkg/ginx"
 	"hb.study/go-lib/di-lib/wire/code/advanced/pkg/middleware"
 
 	"github.com/gogf/gf/util/gconv"
-
-	"hb.study/go-lib/di-lib/wire/code/advanced/user/model"
-
-	"hb.study/go-lib/di-lib/wire/code/advanced/pkg/ginx"
-	"hb.study/go-lib/di-lib/wire/code/advanced/user/service"
 
 	"github.com/gin-gonic/gin"
 )

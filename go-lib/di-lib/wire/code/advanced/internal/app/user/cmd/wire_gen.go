@@ -6,11 +6,11 @@
 package main
 
 import (
+	"hb.study/go-lib/di-lib/wire/code/advanced/internal/app/user/controller"
+	"hb.study/go-lib/di-lib/wire/code/advanced/internal/app/user/dao"
+	"hb.study/go-lib/di-lib/wire/code/advanced/internal/app/user/service"
 	"hb.study/go-lib/di-lib/wire/code/advanced/pkg/database"
 	"hb.study/go-lib/di-lib/wire/code/advanced/setting"
-	"hb.study/go-lib/di-lib/wire/code/advanced/user/controller"
-	"hb.study/go-lib/di-lib/wire/code/advanced/user/dao"
-	"hb.study/go-lib/di-lib/wire/code/advanced/user/service"
 )
 
 // Injectors from wire.go:

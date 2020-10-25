@@ -5,8 +5,8 @@ import (
 
 	"github.com/gogf/gf/util/gconv"
 	"github.com/google/wire"
-	"hb.study/go-lib/di-lib/wire/code/advanced/user/dao"
-	"hb.study/go-lib/di-lib/wire/code/advanced/user/model"
+	"hb.study/go-lib/di-lib/wire/code/advanced/internal/app/user/dao"
+	"hb.study/go-lib/di-lib/wire/code/advanced/internal/app/user/model"
 )
 
 // 正常情况下会重新建一个UserDto结构体来做数据传输

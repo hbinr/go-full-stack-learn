@@ -4,10 +4,10 @@ package main
 
 import (
 	"github.com/google/wire"
+	"hb.study/go-lib/di-lib/wire/code/advanced/internal/app/user"
+	"hb.study/go-lib/di-lib/wire/code/advanced/internal/app/user/controller"
 	"hb.study/go-lib/di-lib/wire/code/advanced/pkg/database"
 	"hb.study/go-lib/di-lib/wire/code/advanced/setting"
-	"hb.study/go-lib/di-lib/wire/code/advanced/user"
-	"hb.study/go-lib/di-lib/wire/code/advanced/user/controller"
 )
 
 // initWebApp 注入函数，自定义的函数直接注入就行，不需要使用wire set

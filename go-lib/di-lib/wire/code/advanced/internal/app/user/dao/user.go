@@ -6,8 +6,7 @@ import (
 
 	"github.com/google/wire"
 	"gorm.io/gorm"
-
-	"hb.study/go-lib/di-lib/wire/code/advanced/user/model"
+	"hb.study/go-lib/di-lib/wire/code/advanced/internal/app/user/model"
 )
 
 // 验证接口是否实现
