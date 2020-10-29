@@ -9,7 +9,11 @@ type Point struct {
 	X, Y int
 }
 
-func (p *Point) Distance(q Point) {
+func (p Point) Distance(q Point) {
+	fmt.Println(p.X, q.Y)
+}
+
+func (p *Point) ptrDistance(q Point) {
 	fmt.Println(p.X, q.Y)
 }
 
@@ -29,8 +33,5 @@ func TestMethod(t *testing.T) {
 	// 调用方式2：使用方法变量
 	distance := p.Distance
 	distance(q) // 1 4
-
-	// 调用方式3 ：使用方法表达式
-	distance = (*Point).Distance // 如果接收者是值传递，写法就变为:Point.Distance
-	distance(&p, q)              // 1 4
+	// 1 4
 }
