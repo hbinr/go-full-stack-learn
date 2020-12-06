@@ -9,7 +9,7 @@ go-kit 三层架构不用变，只需要在启动 server 的时候使用 web 框
 func NewHTTPServer(ctx context.Context, endpoints Endpoints) *gin.Engine {
 	router := gin.Default()
 	router.Use(commonMiddlewar())
-	disk := router.Group("/user")
+	disk := router.Group("/app")
 	{
 		v1 := disk.Group("/v1")
 		{

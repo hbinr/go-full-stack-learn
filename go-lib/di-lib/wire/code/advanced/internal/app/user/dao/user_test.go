@@ -13,7 +13,7 @@ import (
 var db *gorm.DB
 
 func TestMain(m *testing.M) {
-	pflag.Set("conf", "../user/cmd/config-test.yaml")
+	pflag.Set("conf", "../app/cmd/config-httprouter_test.yaml")
 	conf, err := setting.InitConfig()
 	if err != nil {
 		panic(err)
@@ -36,7 +36,7 @@ func TestUserDao_Delete(t *testing.T) {
 		want   bool
 	}{
 		{
-			name:   "test dele",
+			name:   "httprouter_test dele",
 			fields: fields{DB: db},
 			args:   args{id: 1},
 			want:   false,

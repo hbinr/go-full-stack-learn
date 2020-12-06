@@ -49,13 +49,13 @@ import(
 ctx := context.Background()
 client, err := qmgo.NewClient(ctx, &qmgo.Config{Uri: "mongodb://localhost:27017"})
 db := client.Database("class")
-coll := db.Collection("user")
+coll := db.Collection("app")
 ```
 
 如果你的连接是指向固定的 database 和 collection，我们推荐使用下面的更方便的方法初始化连接，后续操作都基于 cli 而不用再关心 database 和 collection
 
 ```go
-cli, err := qmgo.Open(ctx, &qmgo.Config{Uri: "mongodb://localhost:27017", Database: "class", Coll: "user"})
+cli, err := qmgo.Open(ctx, &qmgo.Config{Uri: "mongodb://localhost:27017", Database: "class", Coll: "app"})
 ```
 
 后面都会基于 cli 来举例，如果你使用第一种传统的方式进行初始化，根据上下文，将 `cli` 替换成 `client`、`db` 或 `coll` 即可

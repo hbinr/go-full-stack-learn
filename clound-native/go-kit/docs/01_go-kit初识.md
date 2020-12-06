@@ -12,12 +12,13 @@
 
 定义 Request 和 Response 格式,并可以使用装饰器包装函数,以此来实现各种中间件嵌套。
 
-接口层是服务器和客户端的基本构建块。在 Go Kit 中，服务中的每个对外提供的接口方法都会被定义为一个端点，以便在服务器和客户端之间进行网络通信。每个端点通过使用 HTTP 或 gRPC 等具体通信模式对外提供服务。
 
+Endpoint该层负责接收请求并返回响应。对于每一个服务接口，endpoint 层都使用一个抽象的 Endpoint 来表示 ，我们可以为每一个 Endpoint 装饰 Go-kit 提供的附加功能，如日志记录、限流、熔断等。
 ### 3.Service
 
 服务层是具体的业务逻辑实现，包括核心业务逻辑。它不会也不应该进行 HTTP 或 gRPC 等具体网络传输，或者请求和响应消息类型的编码和解码。
 
+提供具体的业务实现接口，endpoint 层中的 Endpoint 通过调用 service 层的接口方法处理请求。
 ## 使用
 
 ### 1.安装
@@ -27,7 +28,7 @@
 ### 2.使用
 
 以一个简单的服务为例，如根据用户 ID 获取用户姓名。
-[具体代码](../code/user/)
+[具体代码](../code/app/)
 
 **第一步:创建 Service，主要是业务接口及业务类**
 
@@ -44,7 +45,7 @@ type UserService struct {
 
 func (u *UserService) GetUserName(id int) string {
 	if id == 101{
-		return "101 test"
+		return "101 httprouter_test"
 	}
 	return "guest"
 }
@@ -66,12 +67,12 @@ type UserResponse struct {
 }
 
 // 生成endpoint
-func GenUserEndpoint() endpoint.Endpoint {
+func GenUserEndpoint(service service.UserService) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (response interface{}, err error) {
 		r := request.(UserRequest)
-		r.UserID = 101
+		name := service.GetUserName(r.UserID)
 		return UserResponse{
-			UserName: "admin",
+			UserName: name,
 		}, nil
 	}
 }
@@ -85,13 +86,15 @@ json
 ```go
 // DecodeUserRequest 解码请求参数
 func DecodeUserRequest(c context.Context, r *http.Request) (interface{}, error) {
-    // 请求地址(端口设为8080)：http://localhost:8080/?id=101
-	if r.URL.Query().Get("id") != "" {
-		id, _ := strconv.Atoi(r.URL.Query().Get("id"))
-		return EndPoint.UserRequest{
+	// http://localhost:8080/get/1
+	params := httprouter.ParamsFromContext(r.Context())
+	if idStr := params.ByName("id"); idStr != "" {
+		id, _ := strconv.Atoi(idStr)
+		return endpoint.UserRequest{
 			UserID: id,
 		}, nil
 	}
+
 	return nil, errors.New("请求参数错误")
 }
 
@@ -129,7 +132,10 @@ func main() {
 	endp := endpoint.GenUserEndpoint(userService)
 	// 创建服务，go-kit的 http库
 	serverHandle := httptrasport.NewServer(endp, transport.DecodeUserRequest, transport.EncodeUserResponse)
+	// 使用httprouter创建路由， 性能好于gorilla/mux
+	r := httprouter.New()
+	r.Handler(http.MethodGet, "/get/:id", serverHandle)
 	// 启动服务
-	http.ListenAndServe(":8080", serverHandle)
+	http.ListenAndServe(":8080", r)
 }
 ```

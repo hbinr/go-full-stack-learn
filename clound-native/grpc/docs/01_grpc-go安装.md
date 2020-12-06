@@ -13,15 +13,16 @@ $ go get -u google.golang.org/grpc
 
 ## 二.安装PB编译器
 
-### 1.Windows安装
+### Windows安装
 [2020-8-03]目前最新3.12.4版本安装：
 
 https://github.com/protocolbuffers/protobuf/releases/tag/v3.12.4
 
 下载后，将bin目下的执行文件 protoc.exe 移动到 GOPATH/bin目录下，这样就能使用 `protoc` 命令来生成相关go代码了。
 
+### Linux
 
-### 2.不要忽略 include 文件夹中的内容
+### 不要忽略 include 文件夹中的内容
 
 下载的压缩包里还有一个非常重要的目录 `include` 目录，里面存储了 grpc 认为不太常用的 `.proto` 文件，都是定义好的，可以直接 import 来使用的。include目录内容如图：
 

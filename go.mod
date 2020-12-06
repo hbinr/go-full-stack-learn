@@ -13,7 +13,9 @@ require (
 	github.com/gogf/gf v1.14.0
 	github.com/golang/protobuf v1.4.1
 	github.com/google/wire v0.4.0
+	github.com/gorilla/mux v1.7.3
 	github.com/jmoiron/sqlx v1.2.1-0.20200615141059-0794cb1f47ee
+	github.com/julienschmidt/httprouter v1.2.0
 	github.com/nats-io/nats-server/v2 v2.1.2
 	github.com/qiniu/qmgo v0.6.2
 	github.com/shopspring/decimal v1.2.0

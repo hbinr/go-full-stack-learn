@@ -3,7 +3,7 @@ package endpoint
 import (
 	"context"
 
-	"hb.study/clound-native/go-kit/code/user/service"
+	"hb.study/clound-native/go-kit/code/app/service"
 
 	"github.com/go-kit/kit/endpoint"
 )

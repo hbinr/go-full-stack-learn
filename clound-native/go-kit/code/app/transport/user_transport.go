@@ -7,18 +7,22 @@ import (
 	"net/http"
 	"strconv"
 
-	"hb.study/clound-native/go-kit/code/user/endpoint"
+	"github.com/julienschmidt/httprouter"
+
+	"hb.study/clound-native/go-kit/code/app/endpoint"
 )
 
 // DecodeUserRequest 解码请求参数
 func DecodeUserRequest(c context.Context, r *http.Request) (interface{}, error) {
-	// http:localhost:xxx?id="xx"
-	if r.URL.Query().Get("id") != "" {
-		id, _ := strconv.Atoi(r.URL.Query().Get("id"))
+	// http://localhost:8080/get/1
+	params := httprouter.ParamsFromContext(r.Context())
+	if idStr := params.ByName("id"); idStr != "" {
+		id, _ := strconv.Atoi(idStr)
 		return endpoint.UserRequest{
 			UserID: id,
 		}, nil
 	}
+
 	return nil, errors.New("请求参数错误")
 }
 

@@ -13,7 +13,7 @@ func InitMongo() {
 	cli, err := qmgo.Open(ctx, &qmgo.Config{
 		Uri:      "mongodb://localhost:27017",
 		Database: "cron",
-		Coll:     "user"})
+		Coll:     "app"})
 	if err != nil {
 		fmt.Println("连接MongoDB异常，err:", err)
 		return

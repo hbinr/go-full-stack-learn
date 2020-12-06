@@ -36,7 +36,7 @@ zapcore.NewJSONEncoder(zap.NewProductionEncoderConfig())
 我们使用 `zapcore.AddSync()`函数并且将打开的文件句柄传进去。
 
 ```go
-file, _ := os.Create("./test.log")
+file, _ := os.Create("./httprouter_test.log")
 writeSyncer := zapcore.AddSync(file)
 ```
 
@@ -60,7 +60,7 @@ func getEncoder() zapcore.Encoder {
 }
 
 func getLogWriter() zapcore.WriteSyncer {
-	file, _ := os.Create("./test.log")
+	file, _ := os.Create("./httprouter_test.log")
 	return zapcore.AddSync(file)
 }
 ```

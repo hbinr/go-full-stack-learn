@@ -246,7 +246,7 @@ wire遵循 `fail-fast` 的原则，错误必须被处理。如果我们的注入
 ```go
 // NewEvent Event构造函数 新增了错误返回
 func NewEvent(g Greeter) (Event,error) {
-	return Event{Greeter: g}, errors.New("error test")
+	return Event{Greeter: g}, errors.New("error httprouter_test")
 }
 ```
 我们使创建随机失败，修改注入器`InitializeEvent()`的签名，增加error返回值：

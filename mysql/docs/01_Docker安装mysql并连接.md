@@ -67,7 +67,7 @@ default-character-set=utf8
 default-character-set=utf8
 
 [mysqld]
-user=mysql
+app=mysql
 character-set-server=utf8
 default_authentication_plugin=mysql_native_password
 secure_file_priv=/var/lib/mysql

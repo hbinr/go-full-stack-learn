@@ -42,7 +42,7 @@ var UserServiceSet = wire.NewSet(
 func (r *UserService) Insert(user *UserDto) (err error) {
 	var u dao.UserModel
 	if err := gconv.Struct(user, &u); err != nil {
-		fmt.Println("gconv.Struct(user, &u) failed,err:", err)
+		fmt.Println("gconv.Struct(app, &u) failed,err:", err)
 		return err
 	}
 	return r.Dao.Insert(&u)

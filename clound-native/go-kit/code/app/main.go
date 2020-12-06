@@ -3,9 +3,11 @@ package main
 import (
 	"net/http"
 
-	"hb.study/clound-native/go-kit/code/user/endpoint"
-	"hb.study/clound-native/go-kit/code/user/service"
-	"hb.study/clound-native/go-kit/code/user/transport"
+	"github.com/julienschmidt/httprouter"
+
+	"hb.study/clound-native/go-kit/code/app/endpoint"
+	"hb.study/clound-native/go-kit/code/app/service"
+	"hb.study/clound-native/go-kit/code/app/transport"
 
 	httptrasport "github.com/go-kit/kit/transport/http"
 )
@@ -19,5 +21,7 @@ func main() {
 	// 创建服务，go-kit的 http库
 	serverHandle := httptrasport.NewServer(endp, transport.DecodeUserRequest, transport.EncodeUserResponse)
 	// 启动服务
-	http.ListenAndServe(":8080", serverHandle)
+	r := httprouter.New()
+	r.Handler(http.MethodGet, "/get/:id", serverHandle)
+	http.ListenAndServe(":8080", r)
 }

@@ -42,7 +42,7 @@ func (r *UserDao) Insert(user *UserModel) (err error) {
 }
 
 func (r *UserDao) Delete(id int64) bool {
-	// 这种删除调用sql: UPDATE `user` SET `deleted_at`='2020-10-24 23:54:36.003' WHERE id = 6
+	// 这种删除调用sql: UPDATE `app` SET `deleted_at`='2020-10-24 23:54:36.003' WHERE id = 6
 	// 重复请求删除还是会再一次设置时间，即使之前已经删除过了。因为有deleted_at字段。可以不用这个字段
 	//return r.DB.Debug().Where("id = ?", id).Delete(&UserModel{}).Error == nil
 

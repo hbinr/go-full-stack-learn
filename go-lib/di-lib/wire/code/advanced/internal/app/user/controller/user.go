@@ -24,7 +24,7 @@ func NewUseController(e *gin.Engine, us service.IUserService) (*UserController, 
 		engine:      e,
 		userService: us,
 	}
-	g := e.Group("/user")
+	g := e.Group("/app")
 	g.Use(middleware.JWT) // 设置user私有中间件
 	{
 		g.POST("/signup", user.SignUp)

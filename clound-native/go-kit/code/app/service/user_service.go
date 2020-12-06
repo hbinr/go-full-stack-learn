@@ -10,7 +10,7 @@ type UserService struct {
 
 func (u *UserService) GetUserName(id int) string {
 	if id == 101 {
-		return "101 test"
+		return "101 httprouter_test"
 	}
 	return "guest"
 }

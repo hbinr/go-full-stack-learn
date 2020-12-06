@@ -34,7 +34,7 @@ func NewGreeter(m Message) Greeter {
 
 // NewEvent Event构造函数 新增了错误返回
 func NewEvent(g Greeter) (Event, error) {
-	return Event{Greeter: g}, errors.New("error test")
+	return Event{Greeter: g}, errors.New("error httprouter_test")
 }
 
 // Greet Greeter结构体的方法

@@ -62,7 +62,7 @@ nacos.cmdb.loadDataAtStart=false
 db.num=${MYSQL_DATABASE_NUM:1}
 db.url.0=jdbc:mysql://${MYSQL_SERVICE_HOST}:${MYSQL_SERVICE_PORT:3306}/${MYSQL_SERVICE_DB_NAME}?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
 db.url.1=jdbc:mysql://${MYSQL_SERVICE_HOST}:${MYSQL_SERVICE_PORT:3306}/${MYSQL_SERVICE_DB_NAME}?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
-db.user=${MYSQL_SERVICE_USER}
+db.app=${MYSQL_SERVICE_USER}
 db.password=${MYSQL_SERVICE_PASSWORD}
 ### The auth system to use, currently only 'nacos' is supported:
 nacos.core.auth.system.type=${NACOS_AUTH_SYSTEM_TYPE:nacos}

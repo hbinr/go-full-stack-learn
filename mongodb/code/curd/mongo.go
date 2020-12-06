@@ -24,7 +24,7 @@ func main() {
 	cli, err = qmgo.Open(ctx, &qmgo.Config{
 		Uri:      "mongodb://localhost:27017",
 		Database: "cron",
-		Coll:     "user"})
+		Coll:     "app"})
 	if err != nil {
 		fmt.Println("连接MongoDB异常，err:", err)
 		return
@@ -50,7 +50,7 @@ func main() {
 func Insert(ctx context.Context, cli *qmgo.QmgoClient) error {
 	insert := User{
 		UserID:   1,
-		UserName: "test",
+		UserName: "httprouter_test",
 	}
 	inserRes, err := cli.InsertOne(ctx, insert)
 	if err != nil {

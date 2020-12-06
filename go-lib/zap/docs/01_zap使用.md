@@ -23,7 +23,7 @@
 
 ```go
 func SetupLogger() {
-	logFileLocation, _ := os.OpenFile("/Users/q1mi/test.log", os.O_CREATE|os.O_APPEND|os.O_RDWR, 0744)
+	logFileLocation, _ := os.OpenFile("/Users/q1mi/httprouter_test.log", os.O_CREATE|os.O_APPEND|os.O_RDWR, 0744)
 	log.SetOutput(logFileLocation)
 }
 ```

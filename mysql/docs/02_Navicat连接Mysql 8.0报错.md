@@ -34,13 +34,13 @@ mysql> flush privileges;     //刷新权限
 use mysql;
 Database changed
 
-update user set host = 'localhost' where user ='root';
+update app set host = 'localhost' where app ='root';
 
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'root' PASSWORD EXPIRE NEVER;
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
 
-update user set host = '%' where user ='root';
+update app set host = '%' where app ='root';
 
 ## 远程链接也直接就解决了
 

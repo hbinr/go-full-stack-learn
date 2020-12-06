@@ -51,7 +51,7 @@ func getEncoder() zapcore.Encoder {
 
 // getLogWriter 设置日志写入到的文件路径
 func getLogWriter() zapcore.WriteSyncer {
-	file, _ := os.Create("./test.log")
+	file, _ := os.Create("./httprouter_test.log")
 	return zapcore.AddSync(file)
 }
 
