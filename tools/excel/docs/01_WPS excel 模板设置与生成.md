@@ -12,7 +12,6 @@
 - `lookup_vector`:为只包含一行或一列的区域。`lookup_vector` 的数值可以为文本、数字或逻辑值。eg:B2:B10，B列的第2行至第10行为查找值(`lookup_value`)检索范围
 - `result_vector`: 只包含一行或一列的区域，其大小必须与 `lookup_vector` 相同。eg:C2:C10，C列的第2行至第10行为返回值检索范围
 
-[更多请看wps lookup函数官方文档](file:///opt/apps/cn.wps.wps-office/files/kingsoft/wps-office/office6/mui/zh_CN/resource/help/etrainbow/%E5%88%9B%E5%BB%BA%E5%85%AC%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%8F%82%E8%80%83/%E5%87%BD%E6%95%B0%E5%8F%82%E8%80%83/%E6%9F%A5%E6%89%BE%E4%B8%8E%E5%BC%95%E7%94%A8%E5%87%BD%E6%95%B0/function_Lookup.htm)
 
 ## Lookup函数基本使用
 将示例复制到空白工作表中，可能会更易于理解该示例。照着Lookup函数的内容敲一遍，WPS会高亮显示Lookup()函数中每个参数的实际效果：
