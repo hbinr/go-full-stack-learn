@@ -5,18 +5,18 @@ import (
 	"hb.study/clound-native/go-kit/code/app_advanced/internal/user/model"
 )
 
-type UserRepository interface {
+type IUserRepository interface {
 	Create(user *model.User) error
 }
 
-type user struct {
+type userRepo struct {
 	db *gorm.DB
 }
 
-func NewUserRepository(db *gorm.DB) UserRepository {
-	return &user{db: db}
+func NewUserRepository(db *gorm.DB) IUserRepository {
+	return &userRepo{db: db}
 }
 
-func (u *user) Create(user *model.User) error {
+func (u *userRepo) Create(user *model.User) error {
 	return u.db.Create(user).Error
 }

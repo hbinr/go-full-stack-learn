@@ -1,8 +1,6 @@
 package user
 
-type User struct {
-}
-
-func (b *User) Build() error {
+func Build() error {
 	panic("implement me")
+
 }
