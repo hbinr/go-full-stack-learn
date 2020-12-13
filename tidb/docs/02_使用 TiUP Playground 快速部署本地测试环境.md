@@ -51,10 +51,11 @@ tiup playground
 
 ### 方式二：指定 TiDB 版本以及各组件实例个数
 ```sh
-tiup playground v4.0.0 --db 2 --pd 3 --kv 3 --monitor
+tiup playground --host 0.0.0.0 --db 2 --pd 3 --kv 3 --monitor 
 ```
 
 其中:
+- `--host`：表示指定ip
 - ` v4.0.0 `：表示会在本地下载并启动一个 v4.0.0 版本的集群
 - `--db 2`：表示TiDB实例启动1个
 - `--pd 3`：表示PD实例启动3个
