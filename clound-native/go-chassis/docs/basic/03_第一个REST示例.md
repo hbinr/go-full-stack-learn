@@ -146,7 +146,9 @@ export CHASSIS_HOME=/home/hblock/go/src/study/go-chassis-demo/rest
 
 两个命令合并一下也可以：
 ```sh
-export CHASSIS_HOME=$pwd
+export CHASSIS_HOME=$(pwd) 
+or 
+export CHASSIS_HOME=$PWD  # 大写pwd
 ```
 
 ## 启动程序
