@@ -1,0 +1,15 @@
+servicecomb:
+  registry:  # Service Center的地址，默认为 127.0.0.1:30100 
+      address: http://127.0.0.1:30100 
+  protocols: # 传输协议，REST
+    rest:    # 开发REST接口
+      listenAddress: 127.0.0.1:8081  # http 服务的地址和端口
+  options:   # db设置，options为go-chassis提供的默认db配置，没有Max_Connect等配置。。
+    uri: 127.0.0.1:4000
+    poolSize: 10
+    sslEnabled: false # OpenSSL是否开启
+    rootCAFile: test  # OpenSSL生成root CA及签发证书，未弄随便填了个
+    timeout: 100
+    verifyPeer: false
+  redis:     # redis设置 
+    link: 127.0.0.1:6379
