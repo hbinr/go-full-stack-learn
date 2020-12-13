@@ -1,0 +1,4 @@
+servicecomb:
+  service:
+    name: hello.user.service  # 自定义你的服务provider名
+    version: 0.0.1
