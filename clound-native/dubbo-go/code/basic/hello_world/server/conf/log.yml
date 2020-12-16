@@ -1,0 +1,38 @@
+
+# 日志配置，集成了zap(sugar loger)
+level: "debug"                # 日志级别(warn:线上环境;info:测试环境;debug:开发环境;)
+development: true             # 是否开发模式，开发模式可以追逐更多的栈信息。
+disableCaller: false          # 是否关闭注释性logs，默认所有logs都是注释性的，主要用来记录调用函数的文件名和行号
+disableStacktrace: false      # 是否关闭自动堆栈跟踪捕获。
+                              # 默认情况下，开发中的WarnLevel及以上的日志和生产中的ErrorLevel及以上的日志都会被捕获堆栈跟踪。
+sampling:                     # 采样设置，记录全局的CPU、IO负载，参数值：SamplingConfig结构体。
+encoding: "console"           # 设置日志格式，支持编码`json`或者`console`；可以通过 RegisterEncoder 注册的任何第三方编码。
+
+# 编码配置，主要来配置特定key的名称，指定后这些信息会出现在log中。如 "message:hello world,level:info,time:2020-12-12 19:30:35......"
+# 注意：如果不指定对应key的name的话，对应key的信息不处理，即不会写入到文件中，如MessageKey为空的话，内容主体不处理，即看不到log内容。
+encoderConfig:
+  messageKey: "message"        # 信息对应的key名
+  levelKey: "level"            # 日志级别对应的key名
+  timeKey: "time"              # 时间对应的key名
+  nameKey: "logger"            # logger名对应的key名
+  callerKey: "caller"          # 调用函数所在的位置对应的key名，eg: "caller:main.go/36" main.go中第36行
+  stacktraceKey: "stacktrace"  # 栈追踪的key名
+  lineEnding: ""               # 默认换行，即使不设置
+  levelEncoder: "capitalColor" # 大写带颜色
+  timeEncoder: "iso8601"       # 时间格式
+  durationEncoder: "seconds"   # todo
+  callerEncoder: "short"       # 记录调用路径格式为package/file:line
+  nameEncoder: ""              # todo
+
+# 普通输出路径，由于zap底层 OutputPaths是 `[]string`类型，可以填URLs or file paths
+
+outputPaths:
+  - "stdout"                   # 标准输出，正常颜色，直接设置值，`-` 表示list
+
+# 错误日志输出路径，由于zap底层 ErrorOutputPaths是 `[]string`类型，只记录内容程序错误
+errorOutputPaths:
+  - "stderr"                   # 错误输出，红色，直接设置值，`-` 表示list
+
+# logger初始话时额外添加的参数，设置会配置到logger中
+initialFields:
+#go代码eg： map[string]interface{}{"serviceName": "wisdom_park"} #初始化字段，如：添加一个服务器名称

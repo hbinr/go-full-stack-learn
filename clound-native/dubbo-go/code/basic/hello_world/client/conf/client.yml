@@ -1,7 +1,13 @@
+check: true
+# client
+request_timeout : "3s"
+# connect timeout
+connect_timeout : "3s"
+
 # 应用配置
 application:
   organization : "hbstudy.com"         # 组织名
-  name : "HBStudy"                     # 应用名称
+  name : "HBStudy"                     # 服务/应用名称,dubbo-go3.0以后，统一为应用名，没有服务名概念
   module : "dubbogo user-info server"  # 模块
   version : "0.0.1"                    # 版本号
   owner : "dhb"                        # 所属者
@@ -19,50 +25,41 @@ registries :
     timeout	: "3s"                     # 超时时间
     address: "127.0.0.1:8848"          # 服务中心启动后暴露的ip:port，需要安装nacos，并启动
 
-# REST服务设置 搞不懂为什么设计成配置形式，屎一样，对外服务多了，写的就是裹脚布，又臭又长
-# TODO 明天试着结合gin写个REST服务
-services:
+
+# consumer服务设置 一定是references，不是provider
+references:
   "UserProvider":                      # 服务provider名
-    # 可以指定多个registry，使用逗号隔开;不指定默认向所有注册中心注册
-    registry: "nacos-hello-world"      # 注册中心
+    registry: "nacos-hello-world"      # 注册中心，可以指定多个registry，使用逗号隔开;不指定默认向所有注册中心注册
     protocol : "rest"                  # 服务协议类型
-    # 相当于dubbo.xml中的interface
-    interface : "com.ikurento.user.UserProvider"
+    interface : "com.hbstudy.user.UserProvider"  # 相当于dubbo.xml中的interface，提供给Java侧的配置
     loadbalance: "random"              # 负载均衡策略，使用随机策略
     warmup: "100"
     # todo 学习容错https://blog.csdn.net/u011305680/article/details/79730646
     cluster: "failover"                # 失效转移，容错机制，支持:failover;failfast;failback;failsafe
-    rest_path: "/UserProvider"         # URL路径，先定义group:/UserProvider
+    rest_path: "/user"                 # URL路径，先定义group:/UserProvider
     methods:
-      - name: "GetUser"
-        rest_path: "/GetUser"          # URL路径:/UserProvider/GetUser
-        rest_method: "GET"             # 请求类型
-        rest_query_params: "0:id"      # 查询参数，下标:参数名
-      - name: "GetUser0"
-        rest_path: "/GetUser0/{id}"
-        rest_method: "POST"
-        rest_query_params: "1:name,2:age"
-        rest_path_params: "0:id"       # URI 参数，下标:参数名
-        rest_produces: "application/json"  # 解析类型
-        rest_consumes: "application/json;charset=utf-8,*/*"  # 解析类型
-
-      - name: "GetUser3"
-        rest_path: "/GetUser3"
-        rest_method: "GET"
-      - name: "GetUsers"
-        rest_path: "/GetUsers"
-        rest_method: "POST"
+      - name: "GetUserName"
+        rest_path: "/name"     # 方法接口路径
+        rest_method: "GET"                 # HTTP方法
+        rest_query_params: "0:id"  # Query参数，作为url的参数的，使用时类似” /user/name?id=xxxx"
+#        rest_path_params: "1:username"           # URI 参数，Path是用来替换你路径里的条目的，类似“user/{username}
         rest_body: 0
-      - name: "GetUser1"
-        rest_path: "/GetUser1"
-        rest_method: "GET"
+        rest_produces: "application/json"  # 可以提供的内容类型
+        rest_consumes: "application/json;charset=utf-8,*/*"  # 可以接受的客户端参数类型
+      - name: "GetUser"
+        rest_path: "/body"
+        rest_method: "POST"                 # HTTP方法
+        rest_body: 0                        # 返回值中第一个，通常最后一个为error
+        rest_produces: "application/json"  # 可以提供的内容类型
+        rest_consumes: "application/json;charset=utf-8,*/*"  # 可以接受的客户端参数类型
 
-# 协议类型
+
+# 指定通信规则
 protocols:
-  "rest":                # REST协议，支持:rest,dubbo,jsonrpc,grpc
-    name: "rest"         # REST协议，支持:rest,dubbo,jsonrpc,grpc
-    ip: "127.0.0.1"      # REST服务对外暴露的ip
-    port: 8081           # REST服务对外暴露的端口
+  "rest":                # 协议类型，REST协议，支持:rest,dubbo,jsonrpc,grpc
+    name: "rest"         # 协议名，REST协议，支持:rest,dubbo,jsonrpc,grpc
+    ip: "127.0.0.1"      # 协议IP，REST服务对外暴露的ip
+    port: 8081           # 协议端口，REST服务对外暴露的端口
 
 # grpc协议配置
 #protocols:

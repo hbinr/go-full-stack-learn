@@ -3,7 +3,11 @@ module hb.study
 go 1.15
 
 require (
+	github.com/apache/dubbo-go v1.5.2-0.20200919130513-8a059ddd7bf7
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/dubbogo/gost v1.9.2
+	github.com/emicklei/go-restful v2.12.0+incompatible
+	github.com/emicklei/go-restful/v3 v3.0.0
 	github.com/fsnotify/fsnotify v1.4.9
 	github.com/fvbock/endless v0.0.0-20170109170031-447134032cb6
 	github.com/gin-contrib/zap v0.0.1
@@ -38,4 +42,5 @@ require (
 	google.golang.org/protobuf v1.25.0
 	gorm.io/driver/mysql v1.0.2
 	gorm.io/gorm v1.20.4
+	honnef.co/go/tools v0.0.1-2019.2.3
 )
