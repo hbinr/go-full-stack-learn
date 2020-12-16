@@ -10,7 +10,6 @@ import (
 	"hb.study/clound-native/dubbo-go/code/basic/hello_world/server/provider"
 
 	"github.com/apache/dubbo-go/common/logger"
-	gxlog "github.com/dubbogo/gost/log"
 	"github.com/emicklei/go-restful/v3"
 
 	_ "github.com/apache/dubbo-go/common/proxy/proxy_factory"
@@ -38,9 +37,9 @@ import (
 func main() {
 	config.SetProviderService(new(provider.UserProvider))
 	server_impl.AddGoRestfulServerFilter(func(request *restful.Request, response *restful.Response, chain *restful.FilterChain) {
-		gxlog.CInfo(request.SelectedRoutePath())
-		gxlog.CInfo("request %v", request)
-		gxlog.CInfo("response %v", response)
+		//gxlog.CInfo(request.SelectedRoutePath())
+		//gxlog.CInfo("request %v", request)
+		//gxlog.CInfo("response %v", response)
 		chain.ProcessFilter(request, response)
 	})
 

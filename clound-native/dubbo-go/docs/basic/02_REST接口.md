@@ -11,6 +11,5 @@
 **解决：**
 - 一定要记得导包 `_ "github.com/apache/dubbo-go/config_center/nacos"`
 
-即使是定义了REST provider，也得定义个consumer去消费，不要想着去http访问。
-
 参考：https.csdn.net/ra681t58cjxsgckj31/article/details/106110109
+

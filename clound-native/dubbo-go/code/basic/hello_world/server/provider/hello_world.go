@@ -2,28 +2,26 @@ package provider
 
 import (
 	"errors"
-
-	gxlog "github.com/dubbogo/gost/log"
 )
 
 type UserProvider struct {
 }
 
 type UserRequest struct {
-	ID int64 `json:"id"`
+	ID  int64 `json:"id"`
+	Age uint  `json:"age"`
 }
 
 type UserReply struct {
 	Name string `json:"name"`
 }
 
-//	GetUserName GET请求 route:/path?id=12456
+//	GetUserName GET请求 route:/user/name?id=1
 func (h *UserProvider) GetUserName(id string) (res *UserReply, err error) {
-	gxlog.CInfo("id:%s", id)
+	//gxlog.CInfo("id------------:%s", id)
 	res = new(UserReply)
-	if id == "" {
-		res.Name = "hello world"
-		return res, errors.New("invalid param")
+	if id != "1" {
+		return nil, errors.New("invalid param")
 	}
 	if id == "1" {
 		res.Name = "zhangshan"
@@ -31,14 +29,16 @@ func (h *UserProvider) GetUserName(id string) (res *UserReply, err error) {
 	return res, nil
 }
 
-//	GetUser POST请求， route:/path?id=12456
-func (h *UserProvider) GetUser(req interface{}) (res *UserReply, err error) {
-	gxlog.CInfo("req:%v", req)
-	user := req.(UserRequest)
+//	GetUser POST请求， route:/user/body  PostMan自己拼接json请求，eg:{"id":1,"Age":102}
+func (h *UserProvider) GetUser(req *UserRequest) (res *UserReply, err error) {
+	//gxlog.CInfo("req:%v", req)
+	//user := req[0].(UserRequest)
 	res = new(UserReply)
-	if user.ID != 1 {
-		res.Name = "test"
-		return res, errors.New("invalid user")
+	if req.ID != 1 {
+		return nil, errors.New("invalid user")
+	}
+	if req.Age < 18 {
+		return nil, errors.New("未成年") // 底层判断：只要err!=nill，那么就会返回err的内容，此处写 return res 不起作用
 	}
 	res.Name = "zhangshan"
 	return res, nil
