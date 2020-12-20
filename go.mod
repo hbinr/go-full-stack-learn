@@ -26,6 +26,7 @@ require (
 	github.com/json-iterator/go v1.1.10
 	github.com/julienschmidt/httprouter v1.2.0
 	github.com/klauspost/compress v1.10.7 // indirect
+	github.com/labstack/echo/v4 v4.1.15
 	github.com/qiniu/qmgo v0.6.2
 	github.com/shopspring/decimal v1.2.0
 	github.com/spf13/pflag v1.0.5

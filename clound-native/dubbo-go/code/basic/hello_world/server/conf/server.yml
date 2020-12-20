@@ -19,6 +19,8 @@ registries :
     timeout	: "3s"                     # 超时时间
     address: "127.0.0.1:8848"          # 服务中心启动后暴露的ip:port，需要安装nacos，并启动
 
+# 自定义filter
+filter: "ErrResponseFilter"
 
 # 服务设置
 # 搞不懂为什么REST服务设计成配置形式，屎一样，对外服务多了，写的就是裹脚布，又臭又长
@@ -27,9 +29,9 @@ services:
     registry: "nacos-hello-world"      # 注册中心，可以指定多个registry，使用逗号隔开;不指定默认向所有注册中心注册
     protocol : "rest"                  # 服务协议类型
     interface : "com.hbstudy.user.UserProvider"  # 相当于dubbo.xml中的interface，提供给Java侧的配置
-    loadbalance: "random"              # 负载均衡策略，使用随机策略
-    warmup: "100"
-    cluster: "failover"                # 失效转移，容错机制，支持:failover;failfast;failback;failsafe
+#    loadbalance: "random"              # 负载均衡策略，使用随机策略
+#    warmup: "100"
+#    cluster: "failover"                # 失效转移，容错机制，支持:failover;failfast;failback;failsafe
     rest_path: "/user"                 # URL路径，先定义group:/UserProvider
     methods:
       - name: "GetUserName"
@@ -45,6 +47,13 @@ services:
         rest_body: 0                        # 请求参数是对象(go结构体)类型
         rest_produces: "application/json"   # 响应格式
         rest_consumes: "application/json;charset=utf-8,*/*"  # 请求参数格式
+      - name: "UpdateUser2"
+        rest_path: "/update"
+        rest_method: "POST"                 # HTTP方法
+        rest_body: 0                        # 请求参数是对象(go结构体)类型
+        rest_produces: "application/json"   # 响应格式
+        rest_consumes: "application/json;charset=utf-8,*/*"  # 请求参数格式
+
 
 
 # 指定通信规则

@@ -1,6 +1,6 @@
 
 # 日志配置，集成了zap(sugar loger)
-level: "error"                # 日志级别(warn:线上环境;info:测试环境;debug:开发环境;)
+level: "debug"                # 日志级别(warn:线上环境;info:测试环境;debug:开发环境;)
 development: true             # 是否开发模式，开发模式可以追逐更多的栈信息。
 disableCaller: false          # 是否关闭注释性logs，默认所有logs都是注释性的，主要用来记录调用函数的文件名和行号
 disableStacktrace: false      # 是否关闭自动堆栈跟踪捕获。

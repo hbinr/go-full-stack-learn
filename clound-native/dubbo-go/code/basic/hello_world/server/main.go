@@ -7,8 +7,10 @@ import (
 	"syscall"
 	"time"
 
+	"hb.study/clound-native/dubbo-go/code/basic/hello_world/server/filter"
 	"hb.study/clound-native/dubbo-go/code/basic/hello_world/server/provider"
 
+	"github.com/apache/dubbo-go/common/extension"
 	"github.com/apache/dubbo-go/common/logger"
 	"github.com/emicklei/go-restful/v3"
 
@@ -35,7 +37,10 @@ import (
 	export APP_LOG_CONF_FILE="./conf/log.yml"
 */
 func main() {
+
 	config.SetProviderService(new(provider.UserProvider))
+	extension.SetFilter("ErrResponseFilter", filter.GetErrResponseFilter)
+	// 注意：import go-restful 版本为v3
 	server_impl.AddGoRestfulServerFilter(func(request *restful.Request, response *restful.Response, chain *restful.FilterChain) {
 		//gxlog.CInfo(request.SelectedRoutePath())
 		//gxlog.CInfo("request %v", request)
