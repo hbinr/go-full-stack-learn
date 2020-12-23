@@ -102,6 +102,7 @@ docker run -p 3306:3306 --name mysql \
 -d mysql
 ```
 
+
 - --name ：当前启动的容器的名字
 
 - -p 3306:3306：mysql 容器内部的默认端口为 3306 ，为了保持通信，需要将容器的 3306 端口映射到原 Linux 主机的 3306 端口
@@ -119,6 +120,16 @@ docker run -p 3306:3306 --name mysql \
 安装好的 mysql 容器可以理解为是在一个独立“Linux”环境中运行。
 
 -v 参数都是表示挂载目录，挂载完成后，直接操作 Linux 主机对应的目录就相当于操作 mysql 容器的相关目录了。不需要每次进入 mysql 容器去操作了，直接在 Linux 主机操作即可
+
+**补充：在windows上使用docker安装MySQL**
+```sh 
+docker run -p 3306:3306 --name mysql \
+-v E:\\mydata\\mysql\\conf:/etc/mysql \
+-v E:\\mydata\\mysql\\log:/var/log/mysql \
+-v E:\\mydata\\mysql\\data:/var/lib/mysql \
+-e MYSQL_ROOT_PASSWORD=123456 \
+-d mysql:5.7
+```
 
 ### 五.查看正在运行的镜像进程
 
