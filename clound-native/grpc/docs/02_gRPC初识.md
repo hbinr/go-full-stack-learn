@@ -20,4 +20,4 @@ gRPC 默认使用 `protocol buffers`，这是 Google 开源的一套成熟的结
 
 在golang/protobuf Github 源码库里还有针对 Go 语言的生成器， 对更多语言的支持正在开发中。
 
- 你可以在 [proto3语言指南](https://blog.csdn.net/hulinku/article/details/80827018)里找到更多内容， 在与当前默认版本的发布说明比较，看到两者的主要不同点。
+你可以在 [proto3语言指南](https://blog.csdn.net/hulinku/article/details/80827018)里找到更多内容， 在与当前默认版本的发布说明比较，看到两者的主要不同点。

@@ -37,7 +37,7 @@ services:
       - name: "GetUserName"
         rest_path: "/name"             # 方法接口路径
         rest_method: "GET"             # HTTP方法
-        rest_query_params: "0:id"  # Query参数，作为url的参数的，使用时类似” /user/name?id=xxxx"
+        rest_query_params: "0:id"  # Query参数，作为url的参数的，访问时类似"/user/name?id=xxxx"
 #        rest_path_params: "1:username"           # URI 参数，Path是用来替换你路径里的条目的，类似“user/{username}
         rest_produces: "application/json"  # 可以提供的内容类型
         rest_consumes: "application/json;charset=utf-8,*/*"  # 可以接受的客户端参数类型

@@ -21,11 +21,10 @@ encoderConfig:
   levelEncoder: "capitalColor" # 大写带颜色
   timeEncoder: "iso8601"       # 时间格式
   durationEncoder: "seconds"   # todo
-  callerEncoder: "short"       # 记录调用路径格式为package/file:line
+  callerEncoder: "short"       # 记录调用路径格式为 package/file:line
   nameEncoder: ""              # todo
 
 # 普通输出路径，由于zap底层 OutputPaths是 `[]string`类型，可以填URLs or file paths
-
 outputPaths:
   - "stdout"                   # 标准输出，正常颜色，直接设置值，`-` 表示list
 

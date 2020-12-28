@@ -1,6 +1,6 @@
-# grpc-go安装
+# grpc使用及安装
 
-## 一.grpc-go 安装
+## grpc-go 安装
 
 如果是使用go moudle 开发项目，直接导入以下包，IDE会自动安装：
 ```go
@@ -11,7 +11,7 @@ import "google.golang.org/grpc"
 $ go get -u google.golang.org/grpc
 ```
 
-## 二.安装PB编译器
+## 安装PB编译器
 
 ### Windows安装
 [2020-8-03]目前最新3.12.4版本安装：
@@ -20,7 +20,7 @@ https://github.com/protocolbuffers/protobuf/releases/tag/v3.12.4
 
 下载后，将bin目下的执行文件 protoc.exe 移动到 GOPATH/bin目录下，这样就能使用 `protoc` 命令来生成相关go代码了。
 
-### Linux
+
 
 ### 不要忽略 include 文件夹中的内容
 
@@ -37,3 +37,4 @@ https://github.com/protocolbuffers/protobuf/releases/tag/v3.12.4
 
 
 
+### Linux 安装
