@@ -25,7 +25,7 @@ require (
 	github.com/jmoiron/sqlx v1.2.1-0.20200615141059-0794cb1f47ee
 	github.com/json-iterator/go v1.1.10
 	github.com/julienschmidt/httprouter v1.2.0
-	github.com/klauspost/compress v1.10.7 // indirect
+	github.com/kataras/iris/v12 v12.2.0-alpha.0.20201219231310-551462b3c886 // indirect
 	github.com/labstack/echo/v4 v4.1.15
 	github.com/qiniu/qmgo v0.6.2
 	github.com/shopspring/decimal v1.2.0
@@ -36,7 +36,6 @@ require (
 	go.uber.org/fx v1.13.1
 	go.uber.org/multierr v1.6.0 // indirect
 	go.uber.org/zap v1.16.0
-	golang.org/x/net v0.0.0-20201016165138-7b1cca2348c0 // indirect
 	golang.org/x/sys v0.0.0-20201119102817-f84b799fce68 // indirect
 	google.golang.org/grpc v1.27.0
 	google.golang.org/protobuf v1.25.0
