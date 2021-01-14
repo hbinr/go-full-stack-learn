@@ -84,6 +84,8 @@ func (u *UserController) URLPatterns() []restful.Route {
 1. `chassis.RegisterSchema` 注册对外暴露的协议+服务
 2. `chassis.Init` 初始化
 3. `chassis.Run()` 启动服务
+
+**代码如下：**
 ```go
 package main
 
@@ -103,7 +105,8 @@ func main() {
 	chassis.Run()
 }
 ```
-
+注意:
+> `chassis.RegisterSchema`注册服务时，要保证参数为指针，即 `&server.UserController{}`，否则会报错 Parse services from config failed: input must be an ptr
 ## 编写配置文件
 在 `conf`目录下编写配置文件
 
@@ -128,7 +131,11 @@ servicecomb:
 	name: hello.user.service  # 自定义你的服务provider名
 	version: 0.0.1            # 版本号
 ```
-## 设置 CHASSIS_HOME
+## 设置 CHASSIS_HOME 或者CHASSIS_CONF_DIR
+
+这两个环境变量设置其中任意一个都可以
+### CHASSIS_HOME
+
 go-chassis会自动读取`main.go`所在目录下的`conf/chassis.yaml`和`conf/microservice.yaml`
 
 因此`CHASSIS_HOME`的设置取决你的程序启动目录。
@@ -150,9 +157,22 @@ export CHASSIS_HOME=$(pwd)
 or 
 export CHASSIS_HOME=$PWD  # 大写pwd
 ```
+### CHASSIS_CONF_DIR
+看下配置文件所在的路径 
 
+```sh
+cd conf/
+$ pwd
+
+/home/hblock/go/src/study/go-chassis-demo/rest/conf
+```
+然后设置配置文件的路径
+```sh
+export CHASSIS_CONF_DIR=/home/hblock/go/src/study/go-chassis-demo/rest/conf
+or 
+export CHASSIS_CONF_DIR=$PWD  # 大写pwd
+```
 ## 启动程序
-
 
 启动过程会在终端打印很多日志：init相关+自己写的服务注册等
 
