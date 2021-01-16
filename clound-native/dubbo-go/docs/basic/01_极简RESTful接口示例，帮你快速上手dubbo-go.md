@@ -4,7 +4,7 @@
 
 > 提示: 在阅读本文前，请确保服务注册中心已启动成功，如`nacos server`
 
-完整代码请见 [hello-world](https://github.com/hbinr/dubbo-go-in-action/tree/learn/01-hello-world) 
+完整代码请见 [hello-world](https://github.com/hbinr/dubbo-go-in-action/tree/main/01-hello-world) 
 
 ## 第一步：安装dubbo-go
 
