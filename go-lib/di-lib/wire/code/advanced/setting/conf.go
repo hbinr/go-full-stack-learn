@@ -10,7 +10,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-const defaultConfigFile = "./config-httprouter_test.yaml"
+const defaultConfigFile = "./config-test.yaml"
 
 // InitConfig init config
 func InitConfig() (*conf.Config, error) {
@@ -48,15 +48,5 @@ func InitConfig() (*conf.Config, error) {
 	}
 
 	fmt.Println("Config sets success，Conf:", &conf)
-	//
-	//viper.SetConfigFile("config-httprouter_test.yaml")
-	//viper.AddConfigPath(".") // 在cd到 cmd目录下，执行main.go
-	//if err = viper.ReadInConfig(); err != nil {
-	//	panic(fmt.Errorf("Fatal error config file: %s", err))
-	//}
-	//if err := viper.Unmarshal(&conf); err != nil {
-	//	fmt.Println("viper.Unmarshal failed,err", err)
-	//	return nil, err
-	//}
 	return &conf, nil
 }
