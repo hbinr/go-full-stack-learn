@@ -12,11 +12,11 @@ import (
 func ZetExample() {
 	zsetKey := "language_rank"
 	languages := []redis.Z{
-		redis.Z{Score: 90.0, Member: "Golang"},
-		redis.Z{Score: 98.0, Member: "Java"},
-		redis.Z{Score: 95.0, Member: "Python"},
-		redis.Z{Score: 97.0, Member: "JavaScript"},
-		redis.Z{Score: 99.0, Member: "C/C++"},
+		{Score: 90.0, Member: "Golang"},
+		{Score: 98.0, Member: "Java"},
+		{Score: 95.0, Member: "Python"},
+		{Score: 97.0, Member: "JavaScript"},
+		{Score: 99.0, Member: "C/C++"},
 	}
 
 	// ZADD  添加有序集合

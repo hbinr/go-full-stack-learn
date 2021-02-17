@@ -1,6 +1,6 @@
-# Go 中 redis 的基本使用
+# Go 中 redis set|get|zset的基本使用
 
-详细代码见[](../../code/basic_use)
+[源码](https://github.com/hbinr/go-full-stack-learn/tree/master/redis/code/basic_use)
 
 ### set/get 示例
 
