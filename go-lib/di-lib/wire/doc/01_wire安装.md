@@ -11,7 +11,7 @@ go get github.com/google/wire/cmd/wire
 在终端输入命令 `wire`：
 ```go
 hblock@hblock:~$ wire
-wire: go [list -e -json -compiled=true -test=false -export=false -deps=true -find=false -tags=wireinject -- .]: exit status 1: go: cannot find main module; see 'go help modules'
+wire: go [list -e -json -compiled=true -test=false -export=false -deps=true -find=false -tags=wireinject -- .]: exit status 1: go: cannot find main module; see ’go help modules‘
 
 wire: generate failed
 ```

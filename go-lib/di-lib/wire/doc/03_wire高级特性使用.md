@@ -1,6 +1,6 @@
 # wire高级特性
 
-以开发一个web项目([配套代码](../code/advanced/))为基准，面向接口开发，最大限度的利用依赖注入`wire`工具。
+以开发一个web项目([配套代码](https://github.com/hbinr/go-full-stack-learn/tree/master/go-lib/di-lib/wire/code/advanced)为基准，面向接口开发，最大限度的利用依赖注入`wire`工具。
 
 先说下个人感受：
 
@@ -138,7 +138,8 @@ var (
   _wireMonsterValue = kitty
 )
 ```
-结构字段作为构造器
+## 结构字段作为构造器
+
 有时候我们编写一个构造器，只是简单的返回某个结构的一个字段，这时可以使用`wire.FieldsOf`简化操作。现在我们直接创建了`Mission`结构，如果想获得`Monster`和`Player`类型的对象，就可以对`Mission`使用`wire.FieldsOf`：
 ```go
 func NewMission() Mission {
