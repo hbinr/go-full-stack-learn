@@ -36,36 +36,36 @@ func transactionDemo() (err error) {
 	sqlStr1 := "Update demo set age=30 where id=?"
 	rs, err = tx.Exec(sqlStr1, 1)
 	if err != nil {
-		fmt.Println("tx.Exec sqlStr1 failed,err:", err)
+		fmt.Println("sql:[Update demo set age=30 where id=?] failed,err:", err)
 		return err
 	}
 	n, err = rs.RowsAffected()
 	if err != nil {
-		fmt.Println("rs.RowsAffected sqlStr1 failed,err:", err)
+		fmt.Println("sql: [Update demo set age=30 where id=?] rs.RowsAffected  failed,err:", err)
 		return err
 	}
 	if n != 1 {
-		return errors.New("exec sqlStr1 failed")
+		return errors.New("sql: [Update demo set age=30 where id=?] exec failed")
 	}
 
 	sqlStr2 := "Update demo set age=50 where id=?"
 	rs, err = tx.Exec(sqlStr2, 5)
 	if err != nil {
-		fmt.Println("tx.Exec sqlStr2 failed,err:", err)
+		fmt.Println("sql: [Update demo set age=50 where id=?] failed,err:", err)
 		return err
 	}
 	n, err = rs.RowsAffected()
 	if err != nil {
-		fmt.Println("rs.RowsAffected RowsAffected failed,err:", err)
+		fmt.Println("sql: [Update demo set age=50 where id=?] rs.RowsAffected failed,err:", err)
 		return err
 	}
 	if n != 1 {
-		return errors.New("exec sqlStr1 failed")
+		return errors.New("sql: [Update demo set age=50 where id=?] exec failed")
 	}
 	return err
 }
 
-func main() {
+func TestMain() {
 	if err := db.InitMysql(); err != nil {
 		fmt.Println("sqlx.InitMysql failed,err:", err)
 		return
