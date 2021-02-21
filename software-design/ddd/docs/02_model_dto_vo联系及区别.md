@@ -1,6 +1,6 @@
 # rest api中的model， vo， dto之间的关系
 
-**model:**用于接收数据库中的数据，通过mybatis 的ORM对象关系映射来获取数据
+**model:**用于接收数据库中的数据，通过 mybatis(java技术栈一个组件) 的ORM对象关系映射来获取数据
 
 service主要是来处理业务逻辑，返回数据（数据的返回不会做如何处理，只是将model中的数据进行整合然后保证返回的数据完整性，比如在service中返回一个user model 和一个 role model, 会提供一个UserROleBO来接收user 和 role的数据）
 
