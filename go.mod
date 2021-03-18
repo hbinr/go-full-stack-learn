@@ -1,6 +1,6 @@
 module hb.study
 
-go 1.15
+go 1.16
 
 require (
 	github.com/apache/dubbo-go v1.5.4
