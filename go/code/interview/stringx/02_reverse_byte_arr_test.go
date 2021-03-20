@@ -1,7 +1,7 @@
 /*
  * @Author: duanhaobin
  * @Date: 2021-03-17 17:38:55
- * @LastEditTime: 2021-03-17 18:46:29
+ * @LastEditTime: 2021-03-20 10:33:55
  * @FilePath: \go-full-stack-learn\go\code\interview\stringx\02_reverse_byte_arr_test.go
  */
 
@@ -47,7 +47,7 @@ func TestReverseByteArr(t *testing.T) {
 func reverseByteArr(s []byte) []byte {
 	right := len(s) - 1
 	left := 0
-	if left < right {
+	for left < right {
 		s[left], s[right] = s[right], s[left]
 		left++
 		right--

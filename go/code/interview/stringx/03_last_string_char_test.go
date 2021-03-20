@@ -1,7 +1,7 @@
 /*
  * @Author: duanhaobin
  * @Date: 2021-03-17 18:36:40
- * @LastEditTime: 2021-03-17 18:57:48
+ * @LastEditTime: 2021-03-20 11:19:17
  * @FilePath: \go-full-stack-learn\go\code\interview\stringx\03_last_string_char_test.go
  */
 package stringx
@@ -34,6 +34,7 @@ import (
 */
 
 func TestLastStringChar(t *testing.T) {
+	fmt.Println("0-'a'", 'd'-'a')
 	fmt.Println("res: ", lastStringChar("loveleetcode"))
 	fmt.Println("res2: ", lastStringChar2("loveleetcode"))
 }
@@ -62,8 +63,10 @@ func lastStringChar2(s string) int {
 	for _, ch := range s {
 		cnt[ch-'a']++
 	}
+	fmt.Println("cnt为：", cnt)
 	for i, ch := range s {
-		if cnt[ch-'a'] == 1 {
+		if cnt[ch-'a'] == 1 { // 等于1表示该元素在上次遍历中存在，
+			// 因为cnt初识化时，所有元素都为0，cnt[ch-'a']++后，便有了该值的记录
 			return i
 		}
 	}
