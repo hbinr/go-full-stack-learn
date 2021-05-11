@@ -7,9 +7,9 @@ import (
 )
 
 /*
-
- */
-func TestMutilFuncs(t *testing.T) {
+	defer error应用
+*/
+func TestMutilErr(t *testing.T) {
 	e1()
 	e2()
 	e3()
