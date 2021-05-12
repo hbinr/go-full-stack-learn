@@ -1,10 +1,11 @@
-## Typescript 究竟是什么？
+# TypeScript初识及安装
+## TypeScript 究竟是什么？
 - Javascript that scales，可以理解为是Javascript的超集
 - 静态类型风格的类型系统
 - 从es6到es10甚至是esnext的语法支持
 - 兼容各种浏览器，各种系统，各种服务器，完全开源
 
-## 使用Typescript的优点
+## 使用TypeScript的优点
 ### 程序更容易理解
 1. 更方便的查看别人写的代码，函数或者方法输入输出的参数类型都一目了然，不需要看完一个函数的代码才知道它主要做了什么事
 2. 省略了诸多调试过程，能很明确的知道字段的定义和用处，不用在疑惑的去断点调试了
@@ -21,19 +22,19 @@
 ### 非常好的包容性
 1. 完全兼容Javascript
 2. 第三方库可以单独编写类型文件
-3. 大多数项目都支持Typescript
+3. 大多数项目都支持TypeScript
 
-## 使用Typescript的缺点
+## 使用TypeScript的缺点
 1. 增加了一些学习成本，对于后端开发人员，这些可以忽略
 2. 短期内增加了一些开发成本，因为需要增加很多类型定义，但是当项目复杂后，维护起来去方便很多。
 
 ## 安装
 
-**Typescript 官网地址**: https://www.typescriptlang.org/zh/
+**TypeScript 官网地址**: https://www.typescriptlang.org/zh/
 
 使用 nvm 来管理 node 版本: https://github.com/nvm-sh/nvm
 
-安装 Typescript:
+安装 TypeScript:
 ```sh
 npm install -g typescript
 ```
@@ -42,7 +43,7 @@ npm install -g typescript
 tsc -v
 ```
 
-## Hello World
+## 最简版Hello World
 1. 创建`test.ts`文件
 ```ts
 const hello = (name:string) =>{
@@ -64,4 +65,4 @@ var hello = function (name) {
 hello("world");
 ```
 
-可以看到使用`Typescript`编写的代码被翻译为`JavaScript`代码。
+可以看到使用`TypeScript`编写的代码被翻译为`JavaScript`代码。
