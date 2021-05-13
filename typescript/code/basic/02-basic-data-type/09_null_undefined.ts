@@ -15,7 +15,7 @@
 
  }
 
- testNull(null) // VSCode编辑器会报错: 类型“null”的参数不能赋给类型“string”的参数
+//  testNull(null) // VSCode编辑器会报错: 类型“null”的参数不能赋给类型“string”的参数
                 // 但是使用tsc xx.ts 却能通过。
                 // 添加 --strictNullChecks 参数，即 tsc xx.ts --strictNullChecks 时就能检查null了，编译就报错了
 
