@@ -35,3 +35,4 @@ for(let i = 0; i < numArr.length;i++){  // 普通for遍历
 numArr.forEach(num => { // forEach遍历
    console.log('num: ', num);
 });
+
