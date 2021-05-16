@@ -1,5 +1,5 @@
 /**
- * 混合类型 接口，内容要点：
+ * 接口继承类 接口，内容要点：
  * 1. 定义语法：interface A extends class B  {
  *             }
  * 2. 关键字：interface , extends
@@ -11,23 +11,23 @@
  */
 
 // 1. 定义类
-class Control{
+class Control {
     private state: any
 }
 
 // 2. 定义接口，并继承 Control 类
-interface SelectableControl extends Control{
-    select():void
+interface SelectableControl extends Control {
+    select(): void
 }
 
 // 3. 定义 Control 的子类
-class TextBox extends Control{
-    select(){}
+class TextBox extends Control {
+    select() { }
 }
 
 // 4. 定义 Control 的子类，并实现 SelectableControl
-class Button  extends Control implements SelectableControl{
-    select(){}
+class Button extends Control implements SelectableControl {
+    select() { }
 }
 
 // Error：“ImageC”类型缺少“state”属性。
