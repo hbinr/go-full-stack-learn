@@ -6,10 +6,15 @@
  * 4. 使用类型断言的前提是：你不知道某变量的具体类型(any 定义的)，想判断该变量是否符合自己的预期类型
  * 5. 类型断言好比其它语言里的类型转换，但是不进行特殊的数据检查和解构。更类似Go中的类型断言
  * 6. 类型断言没有运行时的影响，只是在编译阶段起作用。
+ * 7. 好处：
+ *      a. 类型断言可以增加代码的灵活性
+ *      b. 在改造旧代码的时候非常有效
+ *      c. 但是类型断言避免滥用，要对上下文有充足的预判，没有任何根据的类型断言会给代码带来安全隐患。
+ * 8. Go中的类型断言，有 ok (bool)返回，如果断言失败，开发者还能搂底处理，但是ts中并没有这种机制，增加了心智负担
  */
 
 let someValue: any = 'this is a string'
 
-let strVal: string = <string> someValue
+let strVal: string = <string>someValue
 
 strVal = someValue as string
