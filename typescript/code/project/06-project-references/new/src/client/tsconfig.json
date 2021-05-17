@@ -1,0 +1,9 @@
+{
+    "extends": "../../tsconfig.json",  // 继承了基础配置
+    "compilerOptions": {
+        "outDir": "../../dist/client", // 指定编译后的输出目录
+    },
+    "references": [
+        { "path": "../common" }        // 指定了其所依赖的工程目录
+    ]
+}
