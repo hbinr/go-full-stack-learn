@@ -16,9 +16,9 @@ notSure = true       // notSure 也可以为boolean类型
 
 
 
-let arr: number[] = [1, 2, 3]
+let arr1: number[] = [1, 2, 3]
 let book = {
-    name:'tom'
+    name: 'tom'
 }
 // 包含任意类型的数组
-let arrAny: any[] = [1, 'string', true, arr, book] 
+let arrAny: any[] = [1, 'string', true, arr, book]

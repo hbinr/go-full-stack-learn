@@ -8,12 +8,12 @@
  * 6. 编译ts代码时，添加 --strictNullChecks 参数，表示严格检查null，遇到null就会编译报错，这能规避很多问题
  */
 
- let u: undefined = undefined
- let n: null = null
+let un: undefined = undefined
+let nu: null = null
 
- function testNull(name: string){
+function testNull(name: string) {
 
- }
+}
 
 //  testNull(null) // VSCode编辑器会报错: 类型“null”的参数不能赋给类型“string”的参数
                 // 但是使用tsc xx.ts 却能通过。

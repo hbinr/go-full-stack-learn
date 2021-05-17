@@ -20,7 +20,7 @@
 type brand = string
 type used = true | false
 
-const str: brand = 'imooc'
+const str2: brand = 'imooc'
 const state: used = true
 
 // 2. 联合类型
