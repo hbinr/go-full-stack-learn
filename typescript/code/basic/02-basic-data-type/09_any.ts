@@ -21,4 +21,4 @@ let book = {
     name: 'tom'
 }
 // 包含任意类型的数组
-let arrAny: any[] = [1, 'string', true, arr, book]
+let arrAny: any[] = [1, 'string', true, arr1, book]
