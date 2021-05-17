@@ -53,20 +53,20 @@ window.onmousedown = function (mouseEvent) {
 
 // 4. 使用类型断言指定数据类型
 
-interface Foo {
+interface Foo1 {
     bar: number
 }
 
-let foo = {} as Foo // 通过类型断言，把  foo 指定为接口类型 Foo
+let foo = {} as Foo1 // 通过类型断言，把  foo 指定为接口类型 Foo
 foo.bar = 1
 
 
 // 类型断言指定数据类型是不能滥用的，如果 foo.bar 并没有赋值，也不会报错，但是这就不符合接口的契约性了
 // 没有按照接口的严格约定，给 foo 赋值 bar 属性的值
-let foo2 = {} as Foo
+let foo2 = {} as Foo1
 
 // 为了解决上述 不遵循接口约定 的问题，我们可以在定义 foo 的时候就指定其数据类型
 
-let foo3: Foo = {
+let foo3: Foo1 = {
     bar: 1
 }
