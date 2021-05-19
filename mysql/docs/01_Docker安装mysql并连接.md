@@ -78,13 +78,17 @@ max_connections=1000
 ```
 
 - 设置编码为 utf8
-- skip-name-resolve 跳过域名解析，解决 mysql 连接慢的问题
+- -skip-name-resolve 跳过域名解析，解决 mysql 连接慢的问题
 - secure_file_priv=/var/lib/mysql ，MYSQL 新特性 secure_file_priv 对读写文件的影响，需要在配置中加入该行内容
 
 ### 五.通过镜像创建 mysql 容器并运行
 
+自己主机不需要新建对应的挂载目录，否则会有报错:
+> chown: changing ownership of '/var/lib/mysql/': Operation not permitted
+https://blog.csdn.net/weixin_41767649/article/details/79584799
+
 ```sh
-## mysql 5.7
+## mysql 5.7 deepin
 docker run -p 3306:3306 --name mysql \
 -v /mydata/mysql/conf:/etc/mysql \
 -v /mydata/mysql/log:/var/log/mysql \
@@ -92,6 +96,14 @@ docker run -p 3306:3306 --name mysql \
 -e MYSQL_ROOT_PASSWORD=123456 \
 -d mysql:5.7 \
 
+
+## mysql 5.7  mac os
+docker run -p 3306:3306 --name mysql \
+-v /etc/mysql:/etc/mysql \
+-v /var/log/mysql:/var/log/mysql \
+-v /var/lib/mysql:/var/lib/mysql \
+-e MYSQL_ROOT_PASSWORD=123456 \
+-d mysql:5.7 \
 
 ## mysql 8.0  /mydata和/home/hblock/MyData 目录是自定义的
 docker run -p 3306:3306 --name mysql \
