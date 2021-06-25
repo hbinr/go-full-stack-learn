@@ -15,7 +15,7 @@
 // 1. 没有 使用存取器的案例
 class Employee {
     fullName: string
-    constructor(fullName: string){
+    constructor(fullName: string) {
         this.fullName = fullName
     }
 }
@@ -34,18 +34,18 @@ let password = 'secret passcode'
 class Employee2 {
     private _fullName: string
 
-    constructor(_fullName: string){
+    constructor(_fullName: string) {
         this._fullName = _fullName
     }
-    
-    get fullName(): string{
+
+    get fullName(): string {
         return this._fullName
     }
 
-    set fullName(newName: string){
+    set fullName(newName: string) {
         if (password && password === 'secret passcode') {
             this._fullName = newName
-        }else{
+        } else {
             console.log('Error: Unauthorized update of employee!');
         }
     }
@@ -53,8 +53,9 @@ class Employee2 {
 
 
 let employee2 = new Employee2('Tom')
+// 注意 set 和 get 的访问就和访问属性一样，不需要加 '()'
 employee2.fullName = 'Bob Smith'  // 如果修改了 password，那么便不能修改成功，还是Tom
 
 if (employee2.fullName) {
-  console.log(employee2.fullName)
+    console.log(employee2.fullName)
 }
