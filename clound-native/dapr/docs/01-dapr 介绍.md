@@ -1,9 +1,3 @@
-<!--
- * @Author: duanhaobin
- * @Date: 2021-03-23 09:01:15
- * @LastEditTime: 2021-03-23 09:06:33
--->
-
 [Dapr](https://github.com/dapr/dapr) is a portable, serverless, event-driven runtime that makes it easy for developers to build resilient, stateless and stateful microservices that run on the cloud and edge and embraces the diversity of languages and developer frameworks.
 
 > [Dapr](https://github.com/dapr/dapr)是一个可移植的、无服务器的、事件驱动的运行时，它使开发人员能够轻松地构建弹性的、无状态的和有状态的微服务，这些微服务在云和边缘上运行，并拥抱语言和开发人员框架的多样性。
