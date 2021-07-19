@@ -121,9 +121,9 @@ docker run -d -p 8848:8848  \
 -e MYSQL_SERVICE_USER=root \
 -e MYSQL_SERVICE_PASSWORD=123456 \
 -e MYSQL_DATABASE_NUM=1 \
--v /data/home/hblock/MyData/nacos/init.d/custom.properties:/home/nacos/init.d/custom.properties \
--v /data/home/hblock/MyData/nacos/logs:/home/nacos/logs \
---restart always
+-v /Users/hblock/dev-middleware/nacos/init.d/custom.properties:/home/nacos/init.d/custom.properties \
+-v /Users/hblock/dev-middleware/nacos/logs:/home/nacos/logs \
+--restart no \
 --name nacos nacos/nacos-server
 ```
 
