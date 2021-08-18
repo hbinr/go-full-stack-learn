@@ -12,7 +12,7 @@ var DB *sqlx.DB
 
 // InitMysql 初始化MySQL连接
 func InitMysql() (err error) {
-	dsn := "root:123456@tcp(127.0.0.1:3306)/gateway?charset=utf8mb4&parseTime=True"
+	dsn := "root:123456@tcp(127.0.0.1:3306)/study?charset=utf8mb4&parseTime=True"
 	// sqlx.Connect() 底层做了Open和Ping
 	if DB, err = sqlx.Connect("mysql", dsn); err != nil {
 		fmt.Println("sqlx.Connect failed, err:", err)

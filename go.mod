@@ -27,7 +27,7 @@ require (
 	github.com/google/wire v0.4.0
 	github.com/gorilla/mux v1.8.0
 	github.com/hashicorp/go-version v1.2.1 // indirect
-	github.com/jmoiron/sqlx v1.2.1-0.20200615141059-0794cb1f47ee
+	github.com/jmoiron/sqlx v1.3.4
 	github.com/json-iterator/go v1.1.10
 	github.com/julienschmidt/httprouter v1.2.0
 	github.com/klauspost/compress v1.11.13 // indirect

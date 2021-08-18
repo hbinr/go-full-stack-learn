@@ -44,8 +44,13 @@ func BatchInsertDemos(ds []interface{}) error {
 
 // BatchInsertDemos2 NamedExec批量新增数据，不需要实现 driver.Valuer 接口
 func BatchInsertDemos2(demos []*Demo) error {
-	_, err := db.DB.NamedExec("INSERT INTO demo (age, name) VALUES (:age, :name)", demos)
-	return err
+	result, err := db.DB.NamedExec("INSERT INTO demo (age, name) VALUES (:age, :name)", demos)
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("result: %#v\n", result)
+	return nil
 }
 
 // QueryByIDs 根据给定ID查询
@@ -97,14 +102,14 @@ func main() {
 	BatchInsertDemos(demos1)
 
 	demos2 := []*Demo{&d1, &d2, &d3}
-	BatchInsertDemos2(demos2)
+	err := BatchInsertDemos2(demos2)
+	fmt.Println("err: ", err)
 
 	res, err := QueryByIDs([]int{1, 2, 3, 5})
 	if err != nil {
 		fmt.Println("QueryByIDs failed，err:", err)
 		return
 	}
-	fmt.Println("QueryByIDs success,data:", res)
 
 	res, err = QueryAndOrderByIDs([]int{1, 6, 7, 3, 5})
 	if err != nil {
