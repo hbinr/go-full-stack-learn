@@ -89,7 +89,7 @@ func DeleteOne(ctx context.Context, cli *qmgo.QmgoClient) error {
 }
 
 func DeleteAll(ctx context.Context, cli *qmgo.QmgoClient) error {
-	res, err := cli.DropCollection(ctx, bson.M{"id": 1}) // 底层调用DeleteMany。返回删除个数
+	res, err := cli.Collection.RemoveAll(ctx, bson.M{"id": 1}) // 底层调用DeleteMany。返回删除个数
 	if err != nil {
 		fmt.Println("删除所有数据异常，err:", err)
 	}

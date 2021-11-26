@@ -31,7 +31,7 @@ func (mf errResponseFilter) Invoke(ctx context.Context, invoker protocol.Invoker
 func (mf errResponseFilter) OnResponse(ctx context.Context, result protocol.Result, invoker protocol.Invoker, invocation protocol.Invocation) protocol.Result {
 	fmt.Println("OnResponse=============================")
 	fmt.Printf("result:%v\n", result)
-	fmt.Printf("invoker.GetUrl().Service():%v\n", invoker.GetUrl().Service()) // com.hbstudy.user.UserProvider
+	fmt.Printf("invoker.GetUrl().Service():%v\n", invoker.GetURL().Service()) // com.hbstudy.user.UserProvider
 	// invalidParm := errors.New("invalid param")
 	// if errors.Is(result.Error(), invalidParm) {
 	// }\
