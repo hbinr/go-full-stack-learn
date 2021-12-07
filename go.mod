@@ -58,4 +58,5 @@ require (
 require (
 	github.com/lib/pq v1.3.0 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20201027041543-1326539a0a0a // indirect
+	gorm.io/plugin/dbresolver v1.1.0
 )
