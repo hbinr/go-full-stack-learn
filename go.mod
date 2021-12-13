@@ -27,7 +27,7 @@ require (
 	github.com/google/wire v0.5.0
 	github.com/gorilla/mux v1.8.0
 	github.com/hashicorp/go-version v1.3.0 // indirect
-	github.com/jinzhu/now v1.1.3 // indirect
+	github.com/jinzhu/now v1.1.4 // indirect
 	github.com/jmoiron/sqlx v1.3.4
 	github.com/json-iterator/go v1.1.12
 	github.com/julienschmidt/httprouter v1.3.0
@@ -44,19 +44,21 @@ require (
 	go.uber.org/fx v1.13.1
 	go.uber.org/zap v1.19.1
 	golang.org/x/crypto v0.0.0-20211117183948-ae814b36b871 // indirect
-	golang.org/x/sys v0.0.0-20211124211545-fe61309f8881 // indirect
+	golang.org/x/sys v0.0.0-20211209171907-798191bca915 // indirect
 	golang.org/x/time v0.0.0-20211116232009-f0f3c7e86c11 // indirect
 	google.golang.org/grpc v1.40.0
 	google.golang.org/protobuf v1.27.1
 	gopkg.in/ini.v1 v1.64.0 // indirect
-	gorm.io/driver/mysql v1.2.0
-	gorm.io/gorm v1.22.3
+	gorm.io/driver/mysql v1.2.1
+	gorm.io/gorm v1.22.4
 	k8s.io/client-go v0.22.4 // indirect
 	k8s.io/utils v0.0.0-20211116205334-6203023598ed // indirect
 )
 
 require (
-	github.com/lib/pq v1.3.0 // indirect
+	github.com/lib/pq v1.10.2 // indirect
+	github.com/mattn/go-sqlite3 v1.14.9 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20201027041543-1326539a0a0a // indirect
+	golang.org/x/tools v0.1.8 // indirect
 	gorm.io/plugin/dbresolver v1.1.0
 )
