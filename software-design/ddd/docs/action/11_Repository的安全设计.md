@@ -1,6 +1,8 @@
 # Repository secure by design: how to sleep better without fear of security vulnerabilities  
 存储库的安全设计：如何在不担心安全漏洞的情况下睡得更好
 
+翻译自:[https://threedots.tech/post/repository-secure-by-design/](https://threedots.tech/post/repository-secure-by-design/)
+
 Thanks to the tests and code review, you can make your project bug-free. Right? Well… actually, probably not. That would be too easy. 😉 These techniques lower the chance of bugs, but they can’t eliminate them entirely. But does it mean we need to live with the risk of bugs until the end of our lives?
 
 由于有了测试和代码审查，你可以使你的项目没有错误。对吗？嗯......实际上，可能不是。那就太容易了。 😉这些技术降低了bug的机会，但它们不能完全消除它们。但这是否意味着我们需要带着bug的风险生活到我们生命的尽头？
