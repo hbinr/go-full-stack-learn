@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 	"hb.study/mysql/code/gorm_gen_demo/controller"
 	"hb.study/mysql/code/gorm_gen_demo/repository"
 )
@@ -13,8 +14,9 @@ import (
 const dsn = "root:123456@tcp(127.0.0.1:3306)/study?charset=utf8mb4&parseTime=True"
 
 func main() {
-
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
+		Logger: logger.Default.LogMode(logger.Info),
+	})
 	if err != nil {
 		panic("db init error")
 	}

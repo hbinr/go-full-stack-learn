@@ -1,5 +1,9 @@
 # gorm-gen使用
-GitHub: https://github.com/go-gorm/gen
+
+参考：
+- [GoFrame数据库ORM--推荐看,文章写的很细很全](https://goframe.org/pages/viewpage.action?pageId=1114686) 
+  - gorm-gen的用法感觉是 gf orm和 ent 的结合
+- https://github.com/go-gorm/gen
 
 基于 GORM, 更安全更友好的ORM工具。
 # 概览
@@ -69,7 +73,9 @@ func main() {
     // 创建gen代码生成器
 	g := gen.NewGenerator(gen.Config{
         // 代码生成目录
-		OutPath: "../../dal/query",
+		OutPath: "../../data/dao",
+        // 模型代码包名
+        ModelPkgPath: "entity",
         // 代码生成模式. 生成默认的query代码
 		Mode:    gen.WithDefaultQuery,
 
@@ -80,26 +86,41 @@ func main() {
         // 用gorm索引标签生成字段
 		FieldWithIndexTag: true,
 	})
-    // 使用初始化好的 DB 连接
-	g.UseDB(*gorm.DB)
+    // 使用初始化好的 DB 连接(复用工程原本使用的SQL连接配置)
+	g.UseDB(db)
 
 	g.WithDataTypeMap(dataMap)
     // 使用 JSON tag 
 	g.WithJSONTagNameStrategy(func(c string) string { return "-" })
 
-    // 指定需要应用的模型, eg: User 
-	g.ApplyBasic(model.User{})
-    // 所有模型都应用
-	g.ApplyBasic(g.GenerateAllTable()...)
+    // 所有需要实现查询方法的结构体
+	g.ApplyBasic(model.User{}, g.GenerateModel("company"), g.GenerateModelAs("people", "Person"))
 
-	g.Execute()
+    // 为指定的数据库表实现除基础方法外的相关方法
+    g.ApplyInterface(func(method model.Method) {}, model.User{}, g.GenerateModel("company"))
+
+   // 执行并生成代码
+    g.Execute()
 }
 ```
-## CURD
 
-### 创建
-### 查询
-#### 单条数据查询
+## 创建
+```go
+// u refer to query.user
+user := model.User{Name: "Modi", Age: 18, Birthday: time.Now()}
+
+u := query.Use(db).User
+err := u.WithContext(ctx).Create(&user) // pass pointer of data to Create
+```
+**选择字段创建** 创建记录并为指定的字段赋值。
+```go
+u := query.Use(db).User
+u.WithContext(ctx).Select(u.Name, u.Age).Create(&user)
+// INSERT INTO `users` (`name`,`age`) VALUES ("modi", 18)
+```
+
+## 查询
+### 单条数据查询
 GROM 提供了 `First、Take、Last` 方法从数据库中查询单条数据，在查询数据库时会自动添加 `LIMIT 1` 条件，如果没有找到记录则返回错误 `ErrRecordNotFound。`
 
 ```go
@@ -164,4 +185,13 @@ type DO struct {
 	modelType reflect.Type
 	schema    *schema.Schema
 }
+```
+
+### 指定字段查询
+通过 `Select`来指定字段，如下：
+```go
+u := query.Use(db).User
+
+user, err := u.WithContext(ctx).Select(u.Name,u.Age).Where(u.ID.Eq(10)).First()
+// SELECT name, age FROM users WHERE id = 10;
 ```

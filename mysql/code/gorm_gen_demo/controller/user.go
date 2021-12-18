@@ -39,3 +39,63 @@ func (uc userController) GetUserByCondition(c *gin.Context) {
 
 	c.JSON(http.StatusOK, user)
 }
+
+func (uc userController) GetUserBySelectFiled(c *gin.Context) {
+	user, err := uc.repo.GetUserBySelectFiled(c.Request.Context())
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, nil)
+		return
+	}
+
+	c.JSON(http.StatusOK, user)
+}
+
+func (uc userController) GetUserByPage(c *gin.Context) {
+	user, err := uc.repo.GetUserByPage(c.Request.Context())
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, nil)
+		return
+	}
+
+	c.JSON(http.StatusOK, user)
+}
+
+func (uc userController) GetSingleFiledByPluck(c *gin.Context) {
+	user, err := uc.repo.GetSingleFiledByPluck(c.Request.Context())
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, nil)
+		return
+	}
+
+	c.JSON(http.StatusOK, user)
+}
+
+func (uc userController) UpdateSingleFiled(c *gin.Context) {
+	err := uc.repo.UpdateSingleFiled(c.Request.Context())
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, nil)
+		return
+	}
+
+	c.JSON(http.StatusOK, nil)
+}
+
+func (uc userController) UpdateSelectFiled(c *gin.Context) {
+	err := uc.repo.UpdateSelectFiled(c.Request.Context())
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, nil)
+		return
+	}
+
+	c.JSON(http.StatusOK, nil)
+}
+
+func (uc userController) UpdateOmitFiled(c *gin.Context) {
+	err := uc.repo.UpdateOmitFiled(c.Request.Context())
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, nil)
+		return
+	}
+
+	c.JSON(http.StatusOK, nil)
+}

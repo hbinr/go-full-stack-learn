@@ -10,9 +10,22 @@ import (
 
 type UserRepo interface {
 	CreateUser(context.Context)
+
+	// 查询相关
 	GetUser(context.Context) (*model.User, error)
 	GetUserByCondition(context.Context) (*model.User, error)
-	UpdateUser(context.Context)
+	GetUserBySelectFiled(context.Context) (*model.User, error)
+	GetUserByPage(context.Context) ([]*model.User, error)
+	GetSingleFiledByPluck(context.Context) ([]string, error)
+
+	// 更新相关
+	UpdateUser(context.Context) error
+	UpdateSingleFiled(context.Context) error
+	UpdateSelectFiled(context.Context) error
+	UpdateOmitFiled(context.Context) error
+
+	// 事务相关
+	DeleteAndUpdate(context.Context) error
 }
 
 type userRepo struct {
