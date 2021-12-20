@@ -85,6 +85,7 @@ func (u userRepo) GetUserByPage(ctx context.Context) ([]*model.User, error) {
 	return res, nil
 }
 
+//  GetSingleFiledByPluck Pluck 方法支持从数据库中查询单列并扫描成切片。如果要查询多列，请使用 Select 和 Scan 方法代替 Pluck 方法
 func (u userRepo) GetSingleFiledByPluck(ctx context.Context) ([]string, error) {
 	user := u.sqlClient.User
 

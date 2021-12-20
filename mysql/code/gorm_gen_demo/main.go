@@ -11,7 +11,7 @@ import (
 	"hb.study/mysql/code/gorm_gen_demo/repository"
 )
 
-const dsn = "root:123456@tcp(127.0.0.1:3306)/study?charset=utf8mb4&parseTime=True"
+const dsn = "root:123456@tcp(127.0.0.1:3306)/study?charset=utf8mb4&parseTime=True&loc=Local"
 
 func main() {
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{

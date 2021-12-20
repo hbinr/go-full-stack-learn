@@ -26,6 +26,7 @@ type UserRepo interface {
 
 	// 事务相关
 	DeleteAndUpdate(context.Context) error
+	DeleteAndCreate(context.Context) error
 }
 
 type userRepo struct {

@@ -2,35 +2,62 @@ package repository
 
 import (
 	"context"
+	"time"
 
+	"hb.study/mysql/code/gorm_gen_demo/data/model"
 	"hb.study/mysql/code/gorm_gen_demo/data/query"
 )
 
-// 事务处理
-
+// DeleteAndUpdate 事务处理——闭包用法
 func (u userRepo) DeleteAndUpdate(ctx context.Context) error {
-	// item := model.User{
-	// 	UserID:   1,
-	// 	UserName: "test_update_select",
-	// 	Age:      50,
-	// }
+	item := model.User{
+		UserID:   1,
+		UserName: "test_for_tx",
+		Age:      50,
+	}
 
 	// 在事务中执行一组操作
-	u.sqlClient.Transaction(func(tx *query.Query) error {
-		// 删除
-		if _, err := tx.User.WithContext(ctx).Where(tx.User.UserID.Eq(1)).Delete(); err != nil {
+	return u.sqlClient.Transaction(func(tx *query.Query) error {
+		user := tx.User
+
+		// DELETE FROM `user` WHERE `user`.`user_id` = 3214506793
+		if _, err := user.WithContext(ctx).Where(tx.User.UserID.Eq(3214506793)).Delete(); err != nil {
+			return err
+		}
+		// UPDATE `user` SET `user_name`='test_for_tx',`updated_at`='2021-12-20 13:41:35.464' WHERE `user`.`user_id` = 1
+		_, err := user.WithContext(ctx).Select(user.UserName).Where(user.UserID.Eq(item.UserID)).Updates(item)
+		if err != nil {
 			return err
 		}
 
 		return nil
 	})
+}
 
-	// 更新时忽略某些字段 可以使用 Omit
-	// UPDATE `user` SET `age`=50,`updated_at`='2021-12-17 17:34:23.576' WHERE `user`.`user_id` = 1
-	// _, err := user.WithContext(ctx).Omit(user.UserName, user.UserID).Where(user.UserID.Eq(item.UserID)).Updates(item)
-	// if err != nil {
-	// 	return err
-	// }
+// DeleteAndCreate 事务处理——手动开启事务
+func (u userRepo) DeleteAndCreate(ctx context.Context) error {
+	item := model.User{
+		UserID:    3,
+		UserName:  "test_for_DeleteAndCreate",
+		Age:       50,
+		Password:  "12345",
+		Email:     "2ssss34@test.com",
+		Phone:     "1233333332",
+		CreatedAt: time.Now(),
+	}
+	tx := u.sqlClient.Begin()
+	if err := tx.User.WithContext(ctx).Create(&item); err != nil {
+		_ = tx.Rollback()
+		return err
+	}
 
+	if _, err := tx.User.WithContext(ctx).Where(tx.User.UserID.Eq(2)).Delete(); err != nil {
+		_ = tx.Rollback()
+		return err
+	}
+
+	if err := tx.Commit(); err != nil {
+		return err
+	}
 	return nil
 }

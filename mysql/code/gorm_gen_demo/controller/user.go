@@ -99,3 +99,23 @@ func (uc userController) UpdateOmitFiled(c *gin.Context) {
 
 	c.JSON(http.StatusOK, nil)
 }
+
+func (uc userController) DeleteAndUpdate(c *gin.Context) {
+	err := uc.repo.DeleteAndUpdate(c.Request.Context())
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, nil)
+		return
+	}
+
+	c.JSON(http.StatusOK, nil)
+}
+
+func (uc userController) DeleteAndCreate(c *gin.Context) {
+	err := uc.repo.DeleteAndCreate(c.Request.Context())
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, nil)
+		return
+	}
+
+	c.JSON(http.StatusOK, nil)
+}

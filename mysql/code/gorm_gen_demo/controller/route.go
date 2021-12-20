@@ -14,5 +14,7 @@ func InitRouter(r *gin.Engine, userCtl userController) {
 	r.GET("/update", userCtl.UpdateSingleFiled)
 	r.GET("/update-select", userCtl.UpdateSelectFiled)
 	r.GET("/update-omit", userCtl.UpdateOmitFiled)
+	r.GET("/tx", userCtl.DeleteAndUpdate)
+	r.GET("/tx-begin", userCtl.DeleteAndCreate)
 
 }
