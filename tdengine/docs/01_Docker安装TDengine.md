@@ -5,7 +5,7 @@
 
 ```sh
 docker run -d --name tdengine \
---hostname="tdengine-server" 
+--hostname="tdengine-server"  \
 -v /home/hbinr/MyData/tdengine/log:/var/log/taos \
 -v /home/hbinr/MyData/tdengine/data:/var/lib/taos \
 -p 6030-6041:6030-6041 \
@@ -14,12 +14,12 @@ tdengine/tdengine
 ```
 
 - `--name` ：当前启动的容器的名字
+- `--hostname="tdengine-server"` 设置容器内 Linux 系统的 hostname，我们可以通过映射 hostname 和 IP 来解决容器 IP 可能变化的问题。**必须设置，否则容器run不起来，会报 ip 获取错误** 可以通过 `docker logs -f 容器id`查看日志信息(在输出的最后就能找到)
 - `-p 6030-6041:6030-6041` \    将容器的 6030 到 6041 端口映射到宿主机的 6030 到 6041 端口上
 - `-p 6030-6041:6030-6041/udp` \    将容器的 6030 到 6041 端口映射到宿主机的 6030 到 6041 端口上
   - 为了支持 TDengine 客户端操作 TDengine server 服务， **TCP 和 UDP 端口都需要打开**。
 - `-v /mydata/tdengine/log:/var/log/taos/mydata/tdengine/log` 挂载到 tdengine 容器的 /var/log/taos 目录--日志
 - `-v /mydata/tdengine/data:/var/lib/taos/mydata/tdengine/data` 挂载到 tdengine 容器的 /var/lib/taos--保存的数据文件
-
 
 
 安装好的 tdengine 容器可以理解为是在一个独立“Linux”环境中运行。
@@ -35,7 +35,7 @@ docker run -d --name tdengine --hostname="tdengine-server"  \
 -v E:\\mydata\\tdengine\\log:/var/lib/taos  \
 -p 6030-6041:6030-6041 \
 -p 6030-6041:6030-6041/udp \
-tdengine/tdengine
+tdengine/tdengine:2.4.0.3
 ```
 
 ## 查看正在运行的镜像进程
