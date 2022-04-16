@@ -12,8 +12,8 @@ type A struct {
 	b int
 }
 
-// TestDataRace 并发问题; goroutine 使用不规范导致数据竞争
-func TestDataRace(t *testing.T) {
+// TestDataRaceErrUse 并发问题; goroutine 使用不规范导致数据竞争
+func TestDataRaceErrUse2(t *testing.T) {
 	data := &A{
 		a: make([]int, 0),
 	}
@@ -28,8 +28,8 @@ func TestDataRace(t *testing.T) {
 	fmt.Println(data.b)
 }
 
-// TestDataRace 并发问题示例2
-func TestDataRace2(t *testing.T) {
+// TestDataRaceRepairByWaitgroup 通过 waitgroup 修复并发问题
+func TestDataRaceRepairByWaitgroup2(t *testing.T) {
 	data := &A{
 		a: make([]int, 0),
 	}
@@ -50,8 +50,8 @@ func TestDataRace2(t *testing.T) {
 	fmt.Println(data.b)
 }
 
-// TestDataRace 修复并发问题
-func TestDataRaceRepair(t *testing.T) {
+// TestDataRaceRepairByMutex 通过锁修复并发问题
+func TestDataRaceRepairByMutex2(t *testing.T) {
 	data := &A{
 		a: make([]int, 0),
 	}
@@ -64,6 +64,7 @@ func TestDataRaceRepair(t *testing.T) {
 			lock.Unlock()
 		}(i)
 	}
+
 	time.Sleep(time.Second * 3)
 	fmt.Println(data.a, len(data.a))
 	fmt.Println(data.b)
