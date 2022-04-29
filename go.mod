@@ -4,7 +4,6 @@ go 1.18
 
 require (
 	dubbo.apache.org/dubbo-go/v3 v3.0.1
-	github.com/dubbogo/gost v1.12.0
 	github.com/emicklei/go-restful/v3 v3.7.3
 	github.com/fsnotify/fsnotify v1.5.1
 	github.com/fvbock/endless v0.0.0-20170109170031-447134032cb6
@@ -62,6 +61,7 @@ require (
 	github.com/clbanning/mxj v1.8.5-0.20200714211355-ff02cfb8ea28 // indirect
 	github.com/creasty/defaults v1.5.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/dubbogo/gost v1.12.0 // indirect
 	github.com/dubbogo/triple v1.1.8-rc2 // indirect
 	github.com/emicklei/go-restful v2.15.0+incompatible // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect

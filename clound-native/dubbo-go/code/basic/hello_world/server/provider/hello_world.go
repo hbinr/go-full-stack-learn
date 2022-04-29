@@ -1,10 +1,6 @@
 package provider
 
-import (
-	"errors"
-
-	gxlog "github.com/dubbogo/gost/log"
-)
+import "errors"
 
 type UserProvider struct {
 }
@@ -21,7 +17,6 @@ type UserReply struct {
 // GetUserName GET请求 route:/user/name?id=1
 func (h *UserProvider) GetUserName(id string) (res *UserReply, err error) {
 	// gost v1.9.2
-	gxlog.CInfo("id------------:%s", id)
 	res = new(UserReply)
 	if id != "1" {
 		res.Name = "犯错了"
@@ -35,7 +30,6 @@ func (h *UserProvider) GetUserName(id string) (res *UserReply, err error) {
 
 // GetUser POST请求， route:/user/body  PostMan自己拼接json请求，eg:{"id":1,"Age":102}
 func (h *UserProvider) GetUser(req *UserRequest) (res *UserReply, err error) {
-	//gxlog.CInfo("req:%v", req)
 	//user := req[0].(UserRequest)
 	res = new(UserReply)
 	if req.ID != 1 {
@@ -50,7 +44,6 @@ func (h *UserProvider) GetUser(req *UserRequest) (res *UserReply, err error) {
 
 // UpdateUser POST请求， route:/user/update  PostMan自己拼接json请求，eg:{"id":1,"Age":102}
 func (h *UserProvider) UpdateUser(req []interface{}) (res *UserReply, err error) {
-	gxlog.CInfo("UpdateUser req:%v", req)
 	user := req[0].(UserRequest)
 	// req interface{}或req []interface{}都会报以下错误
 	// interface conversion: interface {} is map[string]interface {}, not provider.UserRequest
@@ -68,11 +61,9 @@ func (h *UserProvider) UpdateUser(req []interface{}) (res *UserReply, err error)
 
 // UpdateUser2 POST请求， route:/user/update  PostMan自己拼接json请求，eg:{"id":1,"Age":102}
 func (h *UserProvider) UpdateUser2(req interface{}) (res *UserReply, err error) {
-	gxlog.CInfo("UpdateUser req:%v", req)
 
 	// 底层返回的是：map[string]interface{}，那就断言一下它
 	user := req.(map[string]interface{})
-	gxlog.CInfo("UpdateUser t:%v", user)
 	res = new(UserReply)
 	if user["id"] != 1 {
 		return nil, errors.New("invalid user")
