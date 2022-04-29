@@ -5,8 +5,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/apache/dubbo-go/filter"
-	"github.com/apache/dubbo-go/protocol"
+	"dubbo.apache.org/dubbo-go/v3/filter"
+	"dubbo.apache.org/dubbo-go/v3/protocol"
 )
 
 // func init() {

@@ -4,11 +4,11 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/apache/dubbo-go/common"
+	"dubbo.apache.org/dubbo-go/v3/common"
 
-	"github.com/apache/dubbo-go/protocol/rest/config"
-	"github.com/apache/dubbo-go/protocol/rest/server"
-	"github.com/apache/dubbo-go/protocol/rest/server/server_impl"
+	"dubbo.apache.org/dubbo-go/v3/protocol/rest/config"
+	"dubbo.apache.org/dubbo-go/v3/protocol/rest/server"
+	"dubbo.apache.org/dubbo-go/v3/protocol/rest/server/server_impl"
 )
 
 // TestGoRestfulServer

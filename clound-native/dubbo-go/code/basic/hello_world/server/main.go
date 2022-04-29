@@ -10,25 +10,25 @@ import (
 	"hb.study/clound-native/dubbo-go/code/basic/hello_world/server/filter"
 	"hb.study/clound-native/dubbo-go/code/basic/hello_world/server/provider"
 
-	"github.com/apache/dubbo-go/common/extension"
-	"github.com/apache/dubbo-go/common/logger"
+	"dubbo.apache.org/dubbo-go/v3/common/extension"
+	"dubbo.apache.org/dubbo-go/v3/common/logger"
 	"github.com/emicklei/go-restful/v3"
 
-	_ "github.com/apache/dubbo-go/common/proxy/proxy_factory"
-	"github.com/apache/dubbo-go/config"
+	_ "dubbo.apache.org/dubbo-go/v3/common/proxy/proxy_factory"
+	"dubbo.apache.org/dubbo-go/v3/config"
 
-	_ "github.com/apache/dubbo-go/protocol/rest"
-	"github.com/apache/dubbo-go/protocol/rest/server/server_impl"
+	_ "dubbo.apache.org/dubbo-go/v3/protocol/rest"
+	"dubbo.apache.org/dubbo-go/v3/protocol/rest/server/server_impl"
 
-	_ "github.com/apache/dubbo-go/registry/protocol"
+	_ "dubbo.apache.org/dubbo-go/v3/registry/protocol"
 
-	_ "github.com/apache/dubbo-go/filter/filter_impl"
+	_ "dubbo.apache.org/dubbo-go/v3/filter/filter_impl"
 
-	_ "github.com/apache/dubbo-go/cluster/cluster_impl"
+	_ "dubbo.apache.org/dubbo-go/v3/cluster/cluster_impl"
 
-	_ "github.com/apache/dubbo-go/cluster/loadbalance"
-	_ "github.com/apache/dubbo-go/config_center/nacos"
-	_ "github.com/apache/dubbo-go/registry/nacos"
+	_ "dubbo.apache.org/dubbo-go/v3/cluster/loadbalance"
+	_ "dubbo.apache.org/dubbo-go/v3/config_center/nacos"
+	_ "dubbo.apache.org/dubbo-go/v3/registry/nacos"
 )
 
 /**
