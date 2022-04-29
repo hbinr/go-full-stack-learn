@@ -4,7 +4,6 @@ go 1.16
 
 require (
 	github.com/apache/dubbo-go v1.5.7
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/dubbogo/gost v1.11.20
 	github.com/emicklei/go-restful v2.15.0+incompatible // indirect
 	github.com/emicklei/go-restful/v3 v3.4.0
@@ -55,7 +54,8 @@ require (
 
 require (
 	github.com/andybalholm/brotli v1.0.4 // indirect
-	github.com/gofiber/fiber/v2 v2.23.0 // indirect
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/gofiber/fiber/v2 v2.23.0
 	github.com/pkg/errors v0.9.1
 	github.com/youmark/pkcs8 v0.0.0-20201027041543-1326539a0a0a // indirect
 	golang.org/x/crypto v0.0.0-20211215153901-e495a2d5b3d3 // indirect
