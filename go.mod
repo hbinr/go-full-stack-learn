@@ -4,7 +4,6 @@ go 1.18
 
 require (
 	github.com/apache/dubbo-go v1.5.7
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/dubbogo/gost v1.11.20
 	github.com/emicklei/go-restful/v3 v3.4.0
 	github.com/fsnotify/fsnotify v1.5.1
@@ -20,6 +19,7 @@ require (
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/gofiber/fiber/v2 v2.32.0
 	github.com/gogf/gf v1.15.1
+	github.com/golang-jwt/jwt/v4 v4.4.1
 	github.com/golang/protobuf v1.5.2
 	github.com/google/wire v0.5.0
 	github.com/gorilla/mux v1.8.0
