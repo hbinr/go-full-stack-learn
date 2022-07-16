@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"hb.study/redis/code/rdb"
+	"hb.study/database/redis/code/rdb"
 
 	"github.com/go-redis/redis"
 )

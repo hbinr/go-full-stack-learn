@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"hb.study/mysql/code/gorm_gen_demo/data/model"
-	"hb.study/mysql/code/gorm_gen_demo/data/query"
+	"hb.study/database/mysql/code/gorm_gen_demo/data/model"
+	"hb.study/database/mysql/code/gorm_gen_demo/data/query"
 )
 
 // DeleteAndUpdate 事务处理——闭包用法

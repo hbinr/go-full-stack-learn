@@ -10,7 +10,7 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 	"gorm.io/gorm/schema"
-	"hb.study/mysql/code/gorm_gen_demo/data/model"
+	"hb.study/database/mysql/code/gorm_gen_demo/data/model"
 
 	"gorm.io/gen"
 	"gorm.io/gen/field"

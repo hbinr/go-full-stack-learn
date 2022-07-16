@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"hb.study/mysql/code/sqlx_demo/db"
+	"hb.study/database/mysql/code/sqlx_demo/db"
 )
 
 // Demo Demo结构体

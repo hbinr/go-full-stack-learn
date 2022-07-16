@@ -4,8 +4,8 @@ import (
 	"context"
 
 	"gorm.io/gorm"
-	"hb.study/mysql/code/gorm_gen_demo/data/model"
-	"hb.study/mysql/code/gorm_gen_demo/data/query"
+	"hb.study/database/mysql/code/gorm_gen_demo/data/model"
+	"hb.study/database/mysql/code/gorm_gen_demo/data/query"
 )
 
 type UserRepo interface {

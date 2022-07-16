@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"hb.study/mysql/code/gorm_gen_demo/repository"
+	"hb.study/database/mysql/code/gorm_gen_demo/repository"
 )
 
 type userController struct {

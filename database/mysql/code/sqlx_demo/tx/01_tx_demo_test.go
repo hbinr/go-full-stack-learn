@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	"hb.study/mysql/code/sqlx_demo/db"
+	"hb.study/database/mysql/code/sqlx_demo/db"
 )
 
 // transactionDemo 使用sqlx进行事务操作

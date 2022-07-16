@@ -7,7 +7,7 @@ import (
 
 	"github.com/pkg/errors"
 	"gorm.io/gorm"
-	"hb.study/mysql/code/gorm_gen_demo/data/model"
+	"hb.study/database/mysql/code/gorm_gen_demo/data/model"
 )
 
 func (u userRepo) CreateUser(ctx context.Context) {

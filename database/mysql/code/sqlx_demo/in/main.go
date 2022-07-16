@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"hb.study/mysql/code/sqlx_demo/db"
+	"hb.study/database/mysql/code/sqlx_demo/db"
 
 	"github.com/jmoiron/sqlx"
 )

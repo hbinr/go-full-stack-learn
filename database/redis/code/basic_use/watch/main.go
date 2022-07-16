@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"hb.study/redis/code/rdb"
+	"hb.study/database/redis/code/rdb"
 
 	"github.com/go-redis/redis"
 )
