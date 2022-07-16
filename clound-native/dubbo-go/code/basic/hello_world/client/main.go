@@ -7,17 +7,17 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/apache/dubbo-go/common/logger"
-	_ "github.com/apache/dubbo-go/common/proxy/proxy_factory"
-	"github.com/apache/dubbo-go/config"
-	_ "github.com/apache/dubbo-go/config_center/nacos"
-	_ "github.com/apache/dubbo-go/filter/filter_impl"
-	_ "github.com/apache/dubbo-go/protocol/rest"
-	_ "github.com/apache/dubbo-go/registry/nacos"
-	_ "github.com/apache/dubbo-go/registry/protocol"
+	"dubbo.apache.org/dubbo-go/v3/common/logger"
+	_ "dubbo.apache.org/dubbo-go/v3/common/proxy/proxy_factory"
+	"dubbo.apache.org/dubbo-go/v3/config"
+	_ "dubbo.apache.org/dubbo-go/v3/config_center/nacos"
+	_ "dubbo.apache.org/dubbo-go/v3/filter/filter_impl"
+	_ "dubbo.apache.org/dubbo-go/v3/protocol/rest"
+	_ "dubbo.apache.org/dubbo-go/v3/registry/nacos"
+	_ "dubbo.apache.org/dubbo-go/v3/registry/protocol"
 
-	_ "github.com/apache/dubbo-go/cluster/cluster_impl"
-	_ "github.com/apache/dubbo-go/cluster/loadbalance"
+	_ "dubbo.apache.org/dubbo-go/v3/cluster/cluster_impl"
+	_ "dubbo.apache.org/dubbo-go/v3/cluster/loadbalance"
 	"hb.study/clound-native/dubbo-go/code/basic/hello_world/client/consumer"
 )
 

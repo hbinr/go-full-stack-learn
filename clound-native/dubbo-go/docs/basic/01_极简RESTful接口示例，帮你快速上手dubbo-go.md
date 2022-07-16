@@ -9,7 +9,7 @@
 ## 第一步：安装dubbo-go
 
 ```go
-go get -u github.com/apache/dubbo-go
+go get -u dubbo.apache.org/dubbo-go/v3
 ```
 
 ## 第二步：编写 Provider 结构体和提供服务的方法
@@ -36,7 +36,7 @@ package server
 import (
 	"fmt"
 
-	"github.com/apache/dubbo-go/common/logger"
+	"dubbo.apache.org/dubbo-go/v3/common/logger"
 )
 
 type PeopleReq struct {
@@ -75,30 +75,30 @@ func (u *HelloWorldProvider) Reference() string {
 ### 1.引入必需的`dubbo-go`package
 
 ```go
-"github.com/apache/dubbo-go/config"
-"github.com/apache/dubbo-go/protocol/rest/server/server_impl"
+"dubbo.apache.org/dubbo-go/v3/config"
+"dubbo.apache.org/dubbo-go/v3/protocol/rest/server/server_impl"
 "github.com/emicklei/go-restful/v3"
 
-_ "github.com/apache/dubbo-go/cluster/cluster_impl"
-_ "github.com/apache/dubbo-go/common/proxy/proxy_factory"
-_ "github.com/apache/dubbo-go/filter/filter_impl"
-_ "github.com/apache/dubbo-go/protocol/rest"
-_ "github.com/apache/dubbo-go/registry/nacos"
-_ "github.com/apache/dubbo-go/registry/protocol"
+_ "dubbo.apache.org/dubbo-go/v3/cluster/cluster_impl"
+_ "dubbo.apache.org/dubbo-go/v3/common/proxy/proxy_factory"
+_ "dubbo.apache.org/dubbo-go/v3/filter/filter_impl"
+_ "dubbo.apache.org/dubbo-go/v3/protocol/rest"
+_ "dubbo.apache.org/dubbo-go/v3/registry/nacos"
+_ "dubbo.apache.org/dubbo-go/v3/registry/protocol"
 ```
 
 **包作用解释：**
 
 ```go
-"github.com/apache/dubbo-go/config"                              # config加载
-"github.com/apache/dubbo-go/protocol/rest/server/server_impl"    # restful接口实现相关，如果是其他协议，无需导入此包
+"dubbo.apache.org/dubbo-go/v3/config"                              # config加载
+"dubbo.apache.org/dubbo-go/v3/protocol/rest/server/server_impl"    # restful接口实现相关，如果是其他协议，无需导入此包
 "github.com/emicklei/go-restful/v3"                              # restful接口实现相关，如果是其他协议，无需导入此包
 
-_ "github.com/apache/dubbo-go/common/proxy/proxy_factory"        # 默认的代理工厂
-_ "github.com/apache/dubbo-go/filter/filter_impl"                # filter for pshutdown
-_ "github.com/apache/dubbo-go/protocol/rest"                     # restful协议相关，如果是其他协议，更换rest即可
-_ "github.com/apache/dubbo-go/registry/nacos"                    # 服务注册中心相关，如果使用zookeeper的话，此处需换为zookeeper
-_ "github.com/apache/dubbo-go/registry/protocol"                 # 服务注册相关
+_ "dubbo.apache.org/dubbo-go/v3/common/proxy/proxy_factory"        # 默认的代理工厂
+_ "dubbo.apache.org/dubbo-go/v3/filter/filter_impl"                # filter for pshutdown
+_ "dubbo.apache.org/dubbo-go/v3/protocol/rest"                     # restful协议相关，如果是其他协议，更换rest即可
+_ "dubbo.apache.org/dubbo-go/v3/registry/nacos"                    # 服务注册中心相关，如果使用zookeeper的话，此处需换为zookeeper
+_ "dubbo.apache.org/dubbo-go/v3/registry/protocol"                 # 服务注册相关
 ```
 这一步导入了很多包，尤其是匿名导入的包，如果漏了一项，就会启动报错，然后根据报错信息，补充导入即可。
 
