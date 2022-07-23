@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	dubbo.apache.org/dubbo-go/v3 v3.0.1
-	github.com/emicklei/go-restful/v3 v3.7.3
+	github.com/emicklei/go-restful/v3 v3.8.0
 	github.com/fsnotify/fsnotify v1.5.1
 	github.com/fvbock/endless v0.0.0-20170109170031-447134032cb6
 	github.com/gin-contrib/zap v0.0.1
