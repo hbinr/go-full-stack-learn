@@ -53,6 +53,7 @@ Use "goctl model pg [command] --help" for more information about a command.
 # cd 到工作目录 (自定义)
 cd  /Usr/Workspace/go/src/my-project/go-full-stack-learn/database/postgresql/code/go-zero-demo
 
-# 生成代码
-goctl model pg datasource -url="user:password@tcp(127.0.0.1:3306)/database" -table="*"  -dir="./model"
+# 基于 数据库连接 生成代码
+goctl model pg datasource -url="postgres://postgres:123456@127.0.0.1:5432/mabukuai?sslmode=disable" -table="*"  -dir="./model" -style go_zero
+
 ```
