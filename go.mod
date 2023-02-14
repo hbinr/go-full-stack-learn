@@ -4,9 +4,9 @@ go 1.18
 
 require (
 	dubbo.apache.org/dubbo-go/v3 v3.0.1
-	github.com/cloudwego/hertz v0.2.0
+	github.com/cloudwego/hertz v0.3.1
 	github.com/emicklei/go-restful/v3 v3.8.0
-	github.com/fsnotify/fsnotify v1.5.1
+	github.com/fsnotify/fsnotify v1.5.4
 	github.com/fvbock/endless v0.0.0-20170109170031-447134032cb6
 	github.com/gin-contrib/zap v0.0.1
 	github.com/gin-gonic/gin v1.7.7
@@ -61,12 +61,12 @@ require (
 	github.com/buger/jsonparser v1.1.1 // indirect
 	github.com/bytedance/go-tagexpr/v2 v2.9.4 // indirect
 	github.com/bytedance/gopkg v0.0.0-20220623074550-9d6d3df70991 // indirect
-	github.com/bytedance/sonic v1.3.3 // indirect
+	github.com/bytedance/sonic v1.3.5 // indirect
 	github.com/cenkalti/backoff v2.2.1+incompatible // indirect
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20220526154910-8bf9453eb81a // indirect
 	github.com/clbanning/mxj v1.8.5-0.20200714211355-ff02cfb8ea28 // indirect
-	github.com/cloudwego/netpoll v0.2.4 // indirect
+	github.com/cloudwego/netpoll v0.2.6 // indirect
 	github.com/creasty/defaults v1.5.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
